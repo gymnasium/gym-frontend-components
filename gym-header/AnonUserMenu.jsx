@@ -3,7 +3,7 @@ import React from 'react';
 import { getConfig } from '@edx/frontend-platform';
 import { getLoginRedirectUrl } from '@edx/frontend-platform/auth';
 
-import GymSettings from '../data/settings';
+import GymSettings from '../settings';
 const settings = await GymSettings();
 
 const AnonUserMenu = ({ }) => (

@@ -9,7 +9,7 @@ import MainMenu from './MainMenu';
 import AccountNav from './AccountNav';
 import CoursesNav from './CoursesNav';
 
-import GymSettings from '../data/settings';
+import GymSettings from '../settings';
 const settings = await GymSettings();
 
 const LinkedLogo = ({

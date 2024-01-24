@@ -2,7 +2,7 @@ import React from 'react';
 
 import { getConfig } from '@edx/frontend-platform';
 
-import GymSettings from '../data/settings';
+import GymSettings from '../settings';
 const settings = await GymSettings();
 
 const AuthUserMenu = ({}) => (
