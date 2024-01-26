@@ -13,7 +13,7 @@ const AnonUserMenu = ({ }) => (
     >
       {settings.navigation.auth.public[0].title}
     </a></li>
-    <li key="unauth-item-2"><a className={settings.navigation.auth.public[1].type}
+    <li key="unauth-item-2"><a className={settings.navigation.auth.public[1].class}
       href={`${getConfig().LMS_BASE_URL}/register?next=${encodeURIComponent(global.location.href)}`}
     >
       {settings.navigation.auth.public[1].title}
