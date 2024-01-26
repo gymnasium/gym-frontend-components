@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { getConfig } from '@edx/frontend-platform';
 
-const AccountNav = ({ username }) => {
+const DashboardNav = ({ username }) => {
   return (
     <ul role="list">
       <li key="account-item-1"><a href={`${getConfig().ACCOUNT_PROFILE_URL}/u/${username}`}>
@@ -16,8 +16,8 @@ const AccountNav = ({ username }) => {
   );
 };
 
-AccountNav.propTypes = {
+DashboardNav.propTypes = {
   username: PropTypes.string,
 };
 
-export default AccountNav;
+export default DashboardNav;

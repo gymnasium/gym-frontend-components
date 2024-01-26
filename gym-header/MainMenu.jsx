@@ -5,7 +5,7 @@ const settings = await GymSettings();
 const MainMenu = ({
   secondaryNav,
 }) => {
-  return ( 
+  return (
     <ul role="list">
       {settings.navigation.main.map((item, index) => {
         let activeAria;

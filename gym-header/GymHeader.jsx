@@ -6,7 +6,7 @@ import { AppContext } from '@edx/frontend-platform/react';
 import AnonUserMenu from './AnonUserMenu';
 import AuthUserMenu from './AuthUserMenu';
 import MainMenu from './MainMenu';
-import AccountNav from './AccountNav';
+import DashboardNav from './DashboardNav';
 import CoursesNav from './CoursesNav';
 
 import GymSettings from '../settings';
@@ -55,7 +55,7 @@ const GymHeader = ({
           <div className="wrapper">
             <MainMenu secondaryNav={secondaryNav} />
             {authenticatedUser && (
-              <AuthUserMenu
+              <AuthUserMenu secondaryNav={secondaryNav}
                 username={authenticatedUser.username}
               />
             )}
@@ -68,8 +68,8 @@ const GymHeader = ({
       {secondaryNav && (
         <div className="container">
           <nav className="secondary" role="navigation" aria-label="Secondary">
-            {secondaryNav === `account` && authenticatedUser && (
-              <AccountNav
+            {secondaryNav === `dashboard` && authenticatedUser && (
+              <DashboardNav
                 username={authenticatedUser.username}
               />
             )}
