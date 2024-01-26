@@ -33,14 +33,14 @@ LinkedLogo.propTypes = {
 
 const GymHeader = ({
   secondaryNav,
-  courseOrg, courseNumber, courseTitle, showUserDropdown,
+  courseOrg, courseNumber, courseTitle,
 }) => {
   const { authenticatedUser } = useContext(AppContext);
 
   const headerLogo = (
     <LinkedLogo
       className="logo"
-      href={`${getConfig().MARKETING_SITE_BASE_URL}`}
+      href={`${settings.urls.root}`}
       src={`${settings.urls.cms}${settings.logos.main.white.src}`}
       srcSet={`${settings.urls.cms}${settings.logos.main.white.srcset}`}
       alt={getConfig().SITE_NAME}
@@ -53,7 +53,7 @@ const GymHeader = ({
         <nav className="main" role="navigation" aria-label="Main">
           {headerLogo}
           <div className="wrapper">
-            <MainMenu />
+            <MainMenu secondaryNav={secondaryNav} />
             {authenticatedUser && (
               <AuthUserMenu
                 username={authenticatedUser.username}
@@ -79,12 +79,15 @@ const GymHeader = ({
           </nav>
         </div>
       )}
-      <div className="course-header">
-        <div className="container">
-          <span className="d-block small m-0">{courseOrg} {courseNumber}</span>
-          <span className="d-block m-0 font-weight-bold course-title">{courseTitle}</span>
+      {/* TODO: optionally add a course-specific header? */}
+      {secondaryNav === `courses` && (courseOrg !== null && courseNumber !== null && courseTitle !== null) && (
+        <div className="course-header">
+          <div className="container">
+            <span className="d-block small m-0">{courseOrg} {courseNumber}</span>
+            <span className="d-block m-0 font-weight-bold course-title">{courseTitle}</span>
+          </div>
         </div>
-      </div>
+      )}
     </header>
   );
 };
@@ -93,14 +96,14 @@ GymHeader.propTypes = {
   courseOrg: PropTypes.string,
   courseNumber: PropTypes.string,
   courseTitle: PropTypes.string,
-  showUserDropdown: PropTypes.bool,
+  secondaryNav: PropTypes.string,
 };
 
 GymHeader.defaultProps = {
   courseOrg: null,
   courseNumber: null,
   courseTitle: null,
-  showUserDropdown: false,
+  secondaryNav: null,
 };
 
 export default GymHeader;
