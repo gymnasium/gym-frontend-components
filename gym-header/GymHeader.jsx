@@ -5,9 +5,9 @@ import { AppContext } from '@edx/frontend-platform/react';
 
 import AnonUserMenu from './AnonUserMenu';
 import AuthUserMenu from './AuthUserMenu';
-import MainMenu from './MainMenu';
-import DashboardNav from './DashboardNav';
 import CoursesNav from './CoursesNav';
+import DashboardNav from './DashboardNav';
+import MainMenu from './MainMenu';
 
 import GymSettings from '../settings';
 const settings = await GymSettings();
@@ -32,8 +32,11 @@ LinkedLogo.propTypes = {
 };
 
 const GymHeader = ({
+  courseNumber,
+  courseOrg,
+  courseTitle,
+  activeLink,
   secondaryNav,
-  courseOrg, courseNumber, courseTitle,
 }) => {
   const { authenticatedUser } = useContext(AppContext);
 
@@ -53,14 +56,14 @@ const GymHeader = ({
         <nav className="main" role="navigation" aria-label="Main">
           {headerLogo}
           <div className="wrapper">
-            <MainMenu secondaryNav={secondaryNav} />
+            <MainMenu secondaryNav={secondaryNav} activeLink={activeLink} />
             {authenticatedUser && (
-              <AuthUserMenu secondaryNav={secondaryNav}
+              <AuthUserMenu secondaryNav={secondaryNav} activeLink={activeLink}
                 username={authenticatedUser.username}
               />
             )}
             {!authenticatedUser && (
-              <AnonUserMenu />
+              <AnonUserMenu activeLink={activeLink} />
             )}
           </div>
         </nav>
@@ -69,12 +72,12 @@ const GymHeader = ({
         <div className="container">
           <nav className="secondary" role="navigation" aria-label="Secondary">
             {secondaryNav === `dashboard` && authenticatedUser && (
-              <DashboardNav
+              <DashboardNav activeLink={activeLink}
                 username={authenticatedUser.username}
               />
             )}
             {secondaryNav === `courses` && (
-              <CoursesNav />
+              <CoursesNav activeLink={activeLink} />
             )}
           </nav>
         </div>
@@ -83,7 +86,7 @@ const GymHeader = ({
       {secondaryNav === `courses` && (courseOrg !== null && courseNumber !== null && courseTitle !== null) && (
         <div className="course-header">
           <div className="container">
-            <span className="d-block small m-0">{courseOrg} {courseNumber}</span>
+            <span className="d-block small m-0">{courseOrg}-{courseNumber}</span>
             <span className="d-block m-0 font-weight-bold course-title">{courseTitle}</span>
           </div>
         </div>
