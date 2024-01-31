@@ -6,6 +6,9 @@ import { AppContext } from '@edx/frontend-platform/react';
 
 import GymSettings from '../settings';
 const settings = await GymSettings();
+
+console.log(`settings: `, settings);
+
 const GYM_FOOTER_NAV_LINKS = settings.navigation.footer;
 const currentYear = new Date().getFullYear();
 

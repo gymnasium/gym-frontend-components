@@ -7,8 +7,6 @@ export default async function Settings() {
   try {
     let response = await fetch(`${root}/feeds/config.json`);
     let responseJson = await response.json();
-
-    console.log(`settings: `, responseJson);
     return responseJson;
    } catch(error) {
     console.error(error);
