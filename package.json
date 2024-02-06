@@ -2,10 +2,6 @@
   "name": "gym-frontend-components",
   "version": "0.0.1-gym.quince.1",
   "description": "Gymnasium-specific front-end settings, header & footer.",
-  "main": "index.jsx",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gymnasium/gym-frontend-components.git"
