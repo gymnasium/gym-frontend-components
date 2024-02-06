@@ -1,6 +1,6 @@
 {
   "name": "gym-frontend-components",
-  "version": "0.0.1",
+  "version": "0.0.1-gym.quince.1",
   "description": "Gymnasium-specific front-end settings, header & footer.",
   "main": "index.jsx",
   "scripts": {
