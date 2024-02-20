@@ -11,12 +11,12 @@ const AnonUserMenu = ({ }) => (
     <li key="unauth-item-1"><a
       href={`${getLoginRedirectUrl(global.location.href)}`}
     >
-      {settings.header.nav.auth.public[0].title}
+      {settings.header.nav.auth.public[0].label}
     </a></li>
     <li key="unauth-item-2"><a className={settings.header.nav.auth.public[1].class}
       href={`${getConfig().LMS_BASE_URL}/register?next=${encodeURIComponent(global.location.href)}`}
     >
-      {settings.header.nav.auth.public[1].title}
+      {settings.header.nav.auth.public[1].label}
     </a></li>
   </ul>
 );

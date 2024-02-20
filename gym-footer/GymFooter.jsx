@@ -9,7 +9,7 @@ const settings = await GymSettings();
 
 console.log(`settings: `, settings);
 
-const GYM_FOOTER_NAV_LINKS = settings.footer.nav;
+const GYM_FOOTER_NAV_LINKS = settings?.footer.nav;
 const currentYear = new Date().getFullYear();
 
 // Shamelessly borrowed from @https://dev.to/bybydev/how-to-slugify-a-string-in-javascript-4o9n#comment-2689a
@@ -59,10 +59,10 @@ class GymFooter extends React.Component {
         <div className="container">
           <div className="main">
             <div className="header">
-              <a href="/" aria-label="{{ settings.meta.title }} homepage">
-                <img alt={settings.meta.author} src="{{ settings.urls.data }}{{ settings.logos.main.white.src }}" srcset="{{ settings.urls.data }}{{ settings.logos.main.white.srcset }}" decoding="async" fetchpriority="low" width="208" height="24" />
+              <a href={settings?.urls?.root} aria-label={ settings?.meta?.title + ' homepage'}>
+                <img alt={settings?.meta?.author} src={ settings?.urls?.data + settings?.logos?.main?.white?.src } srcSet={ settings?.urls?.data + settings?.logos?.main?.white?.srcset } decoding="async" fetchpriority="low" width="208" height="24" />
               </a>
-              <p>{settings.meta.short_description}</p>
+              <p>{settings?.meta?.short_description}</p>
             </div>
 
             {GYM_FOOTER_NAV_LINKS && (
@@ -70,11 +70,11 @@ class GymFooter extends React.Component {
               const slug = slugify(item['title']);
               return <nav 
                 id={slug}
-                aria-labelledby="{slug}-menu-label"
+                aria-labelledby={slug + '-menu-label'}
                 className="footer-section"
                 key={index}
                 >
-                  <h2 id="{slug}-menu-label">{item['title']}</h2>
+                  <h2 id={slug + '-menu-label'}>{item['title']}</h2>
                   <ul>
                     {item['links'].map((link, i) => {
                       return (
@@ -87,22 +87,23 @@ class GymFooter extends React.Component {
             )}
 
           </div>
+        
+          {/* TODO prepopulate this stuff in the JSON */}
+          <aside className="stack" aria-label="Built with">
+            <a href="https://openedx.org" target="_blank" rel="noopener">
+              <img className="openedx-logo" alt={ settings?.logos.openedx.alt } src={ settings?.urls.data + settings?.logos.openedx.src } decoding="async" fetchpriority="low" width="175" height="70" />
+            </a>
+            
+            <a href="https://docs.tutor.overhang.io" target="_blank" rel="noopener">
+              <img className="tutor-logo" alt={ settings?.logos.tutor.alt } src={ settings?.urls.data + settings?.logos.tutor.src } decoding="async" fetchpriority="low" width="125" height="24" />
+            </a>
+          </aside>
+
+          <p className="copyright">
+            <small>© {currentYear} <a href={settings?.urls?.root} aria-label={ settings?.meta?.title + ' homepage'}>{settings?.meta?.author}</a>
+            </small>
+          </p>
         </div>
-        {/* TODO prepopulate this stuff in the JSON */}
-        <aside className="stack" aria-label="Built with">
-          <a href="https://openedx.org" target="_blank" rel="noopener">
-            <img className="openedx-logo" alt={ settings.logos.openedx.alt } src="{{ settings.urls.data }}{{ settings.logos.openedx.src }}" decoding="async" fetchpriority="low" width="175" height="70" />
-          </a>
-          
-          <a href="https://docs.tutor.overhang.io" target="_blank" rel="noopener">
-            <img className="tutor-logo" alt={ settings.logos.tutor.alt } src="{{ settings.urls.data }}{{ settings.logos.tutor.src }}" decoding="async" fetchpriority="low" width="125" height="24" />
-          </a>
-        </aside>
-
-        <p className="copyright">
-          <small>© {currentYear} <a href={settings.urls.root} aria-label="{{ settings.meta.title }} homepage">{settings.meta.author}</a></small>
-        </p>
-
       </footer>
 
     );
