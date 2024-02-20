@@ -55,10 +55,10 @@ class GymFooter extends React.Component {
 
     return (
 
-      <footer class="site-footer" role="contentinfo">
+      <footer className="site-footer" role="contentinfo">
         <div className="container">
-          <div class="main">
-            <div class="header">
+          <div className="main">
+            <div className="header">
               <a href="/" aria-label="{{ settings.meta.title }} homepage">
                 <img alt={settings.meta.author} src="{{ settings.urls.data }}{{ settings.logos.main.white.src }}" srcset="{{ settings.urls.data }}{{ settings.logos.main.white.srcset }}" decoding="async" fetchpriority="low" width="208" height="24" />
               </a>
@@ -89,13 +89,13 @@ class GymFooter extends React.Component {
           </div>
         </div>
         {/* TODO prepopulate this stuff in the JSON */}
-        <aside class="stack" aria-label="Built with">
+        <aside className="stack" aria-label="Built with">
           <a href="https://openedx.org" target="_blank" rel="noopener">
-            <img class="openedx-logo" alt={ settings.logos.openedx.alt } src="{{ settings.urls.data }}{{ settings.logos.openedx.src }}" decoding="async" fetchpriority="low" width="175" height="70" />
+            <img className="openedx-logo" alt={ settings.logos.openedx.alt } src="{{ settings.urls.data }}{{ settings.logos.openedx.src }}" decoding="async" fetchpriority="low" width="175" height="70" />
           </a>
           
           <a href="https://docs.tutor.overhang.io" target="_blank" rel="noopener">
-            <img class="tutor-logo" alt={ settings.logos.tutor.alt } src="{{ settings.urls.data }}{{ settings.logos.tutor.src }}" decoding="async" fetchpriority="low" width="125" height="24" />
+            <img className="tutor-logo" alt={ settings.logos.tutor.alt } src="{{ settings.urls.data }}{{ settings.logos.tutor.src }}" decoding="async" fetchpriority="low" width="125" height="24" />
           </a>
         </aside>
 
