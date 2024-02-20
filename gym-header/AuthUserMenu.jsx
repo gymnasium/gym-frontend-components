@@ -19,12 +19,12 @@ const AuthUserMenu = ({secondaryNav}) => {
       aria-current={activeAria}
       className={activeClass}
     >
-      {settings.navigation.auth.private[0].title}
+      {settings.header.nav.auth.private[0].title}
     </a></li>
     <li key="auth-item-2"><a
       href={getConfig().LOGOUT_URL}
     >
-      {settings.navigation.auth.private[1].title}
+      {settings.header.nav.auth.private[1].title}
     </a></li>
   </ul>
 )};

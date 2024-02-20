@@ -7,7 +7,7 @@ const MainMenu = ({
 }) => {
   return (
     <ul role="list">
-      {settings.navigation.main.map((item, index) => {
+      {settings.header.nav.main.map((item, index) => {
         let activeAria;
         let activeClass;
         if (secondaryNav && item.href.includes(secondaryNav)) {
@@ -15,7 +15,7 @@ const MainMenu = ({
           activeClass = 'active';
         };
         return (
-          <li key={`main-item-${index}`}><a href={item.href} aria-current={activeAria} className={activeClass}>{item.title}</a></li>
+          <li key={`main-item-${index}`}><a href={item.href} aria-current={activeAria} className={activeClass}>{item.label}</a></li>
         );
       })}
     </ul>

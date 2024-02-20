@@ -6,9 +6,9 @@ const settings = await GymSettings();
 const CoursesNav = ({}) => {
   return ( 
     <ul role="list">
-      {settings.navigation.courses.map((item, index) => {
+      {settings.header.nav.courses.map((item, index) => {
         return (
-          <li key={`item-${index}`}><a href={item.href}>{item.title}</a></li>
+          <li key={`item-${index}`}><a href={item.href}>{item.label}</a></li>
         );
       })}
     </ul>
