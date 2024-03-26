@@ -56,7 +56,7 @@ class GymFooter extends React.Component {
     const { config } = this.context;
 
     // The only unfortunate thing is that this means our <footer> element is wrapped in a <div>
-    return <div dangerouslySetInnerHTML={ { __html: FOOTER } }></div>;
+    return <div dangerouslySetInnerHTML={ { __html: FOOTER } } />;
   }
 }
 
