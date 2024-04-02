@@ -1,6 +1,6 @@
 {
   "name": "gym-frontend-components",
-  "version": "0.0.4-gym.quince.2",
+  "version": "0.0.5-gym.quince.2",
   "description": "Gymnasium-specific front-end settings, header & footer.",
   "repository": {
     "type": "git",
