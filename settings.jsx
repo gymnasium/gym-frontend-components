@@ -1,8 +1,20 @@
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
-ensureConfig(['MARKETING_SITE_BASE_URL']);
+
+ensureConfig(['MARKETING_SITE_BASE_URL'],'gym-frontend-components');
+
 const config = getConfig();
 console.log(`config:`, config);
-const root = MARKETING_SITE_BASE_URL || 'http://edly.io:8888';
+
+// Fallback logic
+let root;
+if (typeof config.MARKETING_SITE_BASE_URL !== 'undefined' && config.MARKETING_SITE_BASE_URL !== null) {
+  root = config.MARKETING_SITE_BASE_URL;
+} else if (typeof process.env.MARKETING_SITE_BASE_URL !== 'undefined' && process.env.MARKETING_SITE_BASE_URL !== null) {
+  root = process.env.MARKETING_SITE_BASE_URL;
+} else {
+  // probably want to avoid hard-coding this, but this is here as a failsafe just in case all of the above fails.
+  root = 'http://edly.io:8888';
+}
 
 export default async function Settings() {
   try {
