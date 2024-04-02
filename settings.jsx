@@ -7,9 +7,9 @@ console.log(`config:`, config);
 
 // Fallback logic
 let root;
-if (typeof config.MARKETING_SITE_BASE_URL !== 'undefined' && config.MARKETING_SITE_BASE_URL !== null) {
+if (!!config.MARKETING_SITE_BASE_URL) {
   root = config.MARKETING_SITE_BASE_URL;
-} else if (typeof process.env.MARKETING_SITE_BASE_URL !== 'undefined' && process.env.MARKETING_SITE_BASE_URL !== null) {
+} else if (!!process.env.MARKETING_SITE_BASE_URL) {
   root = process.env.MARKETING_SITE_BASE_URL;
 } else {
   // probably want to avoid hard-coding this, but this is here as a failsafe just in case all of the above fails.
@@ -24,7 +24,7 @@ console.log(
 
 export default async function Settings() {
   try {
-    let response = await fetch(`${root}/feeds/config.json`);
+    let response = await fetch(`http://edly.io:8888/feeds/config.json`);
     let responseJson = await response.json();
     return responseJson;
    } catch(error) {
