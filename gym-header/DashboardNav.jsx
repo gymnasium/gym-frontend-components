@@ -1,9 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { AppContext } from '@edx/frontend-platform/react';
 
-import { getConfig } from '@edx/frontend-platform';
+import { ensureConfig, getConfig } from '@edx/frontend-platform';
+
+// ensureConfig(['ACCOUNT_PROFILE_URL','ACCOUNT_SETTINGS_URL'], 'DashboardNav');
+
+const getAccountProfileUrl = () => getConfig().ACCOUNT_PROFILE_URL;
+const getAccountSettingsUrl = () => getConfig().ACCOUNT_SETTINGS_URL;
 
 const DashboardNav = ({ activeLink, username }) => {
+  const { authenticatedUser } = useContext(AppContext);
+
   const activeAttr = {
     className: 'active',
     'aria-current': 'page',
@@ -17,12 +25,12 @@ const DashboardNav = ({ activeLink, username }) => {
     profileActive = activeAttr;
   }
 
-  return (
+  return (authenticatedUser &&
     <ul role="list">
-      <li key="dashboard-item-1"><a href={`${getConfig().ACCOUNT_PROFILE_URL}/u/${username}`} {...profileActive}>
+      <li key="dashboard-item-1"><a href={`${getAccountProfileUrl()}/u/${username}`} {...profileActive}>
         Profile
       </a></li>
-      <li key="dashboard-item-2"><a href={getConfig().ACCOUNT_SETTINGS_URL} {...accountActive}>
+      <li key="dashboard-item-2"><a href={getAccountSettingsUrl()} {...accountActive}>
         Account
       </a></li>
     </ul>

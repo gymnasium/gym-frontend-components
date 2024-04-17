@@ -1,12 +1,17 @@
 import React from 'react';
+
+import { ensureConfig, getConfig } from '@edx/frontend-platform';
+
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import GymSettings from '../settings';
-const settings = await GymSettings();
+
+ensureConfig(['GYM_COURSE_NAV'], 'CoursesNav');
+
+const getCourseNav = () => getConfig().GYM_COURSE_NAV;
 
 const CoursesNav = ({}) => {
   return ( 
     <ul role="list">
-      {settings.header.nav.courses.map((item, index) => {
+      {getCourseNav() && getCourseNav().map((item, index) => {
         return (
           <li key={`item-${index}`}><a href={item.href}>{item.label}</a></li>
         );

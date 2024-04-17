@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { getConfig } from '@edx/frontend-platform';
+import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 
 import AnonUserMenu from './AnonUserMenu';
@@ -9,8 +9,12 @@ import CoursesNav from './CoursesNav';
 import DashboardNav from './DashboardNav';
 import MainMenu from './MainMenu';
 
-import GymSettings from '../settings';
-const settings = await GymSettings();
+ensureConfig(['MARKETING_SITE_BASE_URL','SITE_NAME', 'GYM_LOGO_SRC', 'GYM_LOGO_SRCSET'], 'GymHeader');
+
+const getBaseUrl = () => getConfig().MARKETING_SITE_BASE_URL;
+const getSiteName = () => getConfig().SITE_NAME;
+const getLogoSrc = () => getConfig().GYM_LOGO_SRC;
+const getLogoSrcset = () => getConfig().GYM_LOGO_SRCSET;
 
 const LinkedLogo = ({
   href,
@@ -43,10 +47,10 @@ const GymHeader = ({
   const headerLogo = (
     <LinkedLogo
       className="logo"
-      href={`${settings.urls.root}`}
-      src={`${settings.urls.data}${settings.logos.main.white.src}`}
-      srcSet={`${settings.urls.data}${settings.logos.main.white.srcset}`}
-      alt={getConfig().SITE_NAME}
+      href={`${getBaseUrl()}`}
+      src={`${getBaseUrl()}${getLogoSrc()}`}
+      srcSet={`${getBaseUrl()}${getLogoSrcset()}`}
+      alt={getSiteName()}
     />
   );
 
@@ -71,7 +75,7 @@ const GymHeader = ({
       {secondaryNav && (
         <div className="container">
           <nav className="secondary" role="navigation" aria-label="Secondary">
-            {secondaryNav === `dashboard` && authenticatedUser && (
+            {authenticatedUser && secondaryNav === `dashboard` && (
               <DashboardNav activeLink={activeLink}
                 username={authenticatedUser.username}
               />

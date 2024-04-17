@@ -1,33 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import PropTypes from 'prop-types';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
-// import { ensureConfig } from '@edx/frontend-platform/config';
 import { AppContext } from '@edx/frontend-platform/react';
 
-import GymSettings from '../settings';
-const settings = await GymSettings();
+import { htmlDecode } from '../helpers';
+import dompurify from 'dompurify';
 
-console.log(`settings: `, settings);
+ensureConfig(['GYM_FOOTER'], 'GymFooter');
 
-const GYM_FOOTER_NAV_LINKS = settings?.footer.nav;
-const FOOTER = settings?.html?.footer;
-
-const currentYear = new Date().getFullYear();
-
-// Shamelessly borrowed from @https://dev.to/bybydev/how-to-slugify-a-string-in-javascript-4o9n#comment-2689a
-function slugify(str) {
-  str = str.replace(/^\s+|\s+$/g, ''); // trim leading/trailing spaces
-  str = str.toLowerCase(); // convert to lowercase
-  str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-  .replace(/\s+/g, '-') // collapse whitespace and replace by "-"
-  .replace(/-+/g, '-'); // collapse dashes
-  return str;
-}
-
-// ensureConfig([
-//   'LMS_BASE_URL',
-//   'LOGO_TRADEMARK_URL',
-// ], 'Footer component');
+const getFooter = () => getConfig().GYM_FOOTER;
+const decodedFooter = () => htmlDecode(getFooter());
 
 const EVENT_NAMES = {
   FOOTER_LINK: 'edx.bi.footer.link',
@@ -54,9 +37,10 @@ class GymFooter extends React.Component {
 
     } = this.props;
     const { config } = this.context;
+    const sanitizedFooter = { __html: dompurify.sanitize(decodedFooter()) };
 
     // The only unfortunate thing is that this means our <footer> element is wrapped in a <div>
-    return <div dangerouslySetInnerHTML={ { __html: FOOTER } } />;
+    return <div dangerouslySetInnerHTML={ sanitizedFooter } />;
   }
 }
 

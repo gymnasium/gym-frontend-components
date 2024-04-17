@@ -1,13 +1,17 @@
 import React from 'react';
-import GymSettings from '../settings';
-const settings = await GymSettings();
+import { ensureConfig, getConfig } from '@edx/frontend-platform';
+
+ensureConfig(['GYM_MAIN_NAV'], 'MainMenu');
+
+const getMainNav = () => getConfig().GYM_MAIN_NAV;
 
 const MainMenu = ({
   secondaryNav,
 }) => {
   return (
     <ul role="list">
-      {settings.header.nav.main.map((item, index) => {
+
+      {getMainNav() && getMainNav().map((item, index) => {
         let activeAria;
         let activeClass;
         if (secondaryNav && item.href.includes(secondaryNav)) {

@@ -1,11 +1,16 @@
 import React from 'react';
 
-import { getConfig } from '@edx/frontend-platform';
+import { ensureConfig, getConfig } from '@edx/frontend-platform';
 
-import GymSettings from '../settings';
-const settings = await GymSettings();
+ensureConfig(['LMS_BASE_URL','LOGOUT_URL', 'GYM_DASHBOARD_LABEL', 'GYM_LOGOUT_LABEL'], 'AuthUserMenu');
+
+const getLmsUrl = () => getConfig().LMS_BASE_URL;
+const getLogoutUrl = () => getConfig().LOGOUT_URL;
+const getDashLabel = () => getConfig().GYM_DASHBOARD_LABEL;
+const getLogoutLabel = () => getConfig().GYM_LOGOUT_LABEL;
 
 const AuthUserMenu = ({secondaryNav}) => {
+  
   let activeAria;
   let activeClass;
   if (secondaryNav == 'dashboard') {
@@ -15,16 +20,16 @@ const AuthUserMenu = ({secondaryNav}) => {
   return (
   <ul className="auth" role="list">
     <li key="auth-item-1"><a
-      href={`${getConfig().LMS_BASE_URL}/dashboard`}
+      href={`${getLmsUrl()}/dashboard`}
       aria-current={activeAria}
       className={activeClass}
     >
-      {settings.header.nav.auth.private[0].label}
+      {getDashLabel()}
     </a></li>
     <li key="auth-item-2"><a
-      href={getConfig().LOGOUT_URL}
+      href={getLogoutUrl()}
     >
-      {settings.header.nav.auth.private[1].label}
+      {getLogoutLabel()}
     </a></li>
   </ul>
 )};
