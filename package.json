@@ -1,0 +1,15 @@
+{
+  "name": "gym-frontend-components",
+  "version": "0.0.8",
+  "description": "Gymnasium-specific front-end settings, header & footer, plus helper functions.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gymnasium/gym-frontend-components.git"
+  },
+  "author": "Gymnasium",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/gymnasium/gym-frontend-components/issues"
+  },
+  "homepage": "https://github.com/gymnasium/gym-frontend-components#readme"
+}
