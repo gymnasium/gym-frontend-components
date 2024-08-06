@@ -90,8 +90,8 @@ const GymHeader = ({
       {secondaryNav === `courses` && (courseOrg !== null && courseNumber !== null && courseTitle !== null) && (
         <div className="course-header">
           <div className="container">
-            <span className="d-block small m-0">{courseOrg}-{courseNumber}</span>
-            <span className="d-block m-0 font-weight-bold course-title">{courseTitle}</span>
+            <span className="course-id">{courseOrg}-{courseNumber}</span>
+            <span className="course-title">{courseTitle}</span>
           </div>
         </div>
       )}
