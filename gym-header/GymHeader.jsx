@@ -36,6 +36,7 @@ LinkedLogo.propTypes = {
 };
 
 const GymHeader = ({
+  courseId,
   courseNumber,
   courseOrg,
   courseTitle,
@@ -86,9 +87,9 @@ const GymHeader = ({
           </nav>
         </div>
       )}
-      {/* TODO: optionally add a course-specific header? */}
+      {/* Course Header - this is duplicated in the theme */}
       {secondaryNav === `courses` && (courseOrg !== null && courseNumber !== null && courseTitle !== null) && (
-        <div className="course-header">
+        <div id="course-header" className="course-header" data-course-id={courseId} data-course-num={courseNumber}>
           <div className="container">
             <span className="course-id">{courseOrg}-{courseNumber}</span>
             <span className="course-title">{courseTitle}</span>
@@ -100,6 +101,7 @@ const GymHeader = ({
 };
 
 GymHeader.propTypes = {
+  courseId: PropTypes.string,
   courseOrg: PropTypes.string,
   courseNumber: PropTypes.string,
   courseTitle: PropTypes.string,
@@ -107,6 +109,7 @@ GymHeader.propTypes = {
 };
 
 GymHeader.defaultProps = {
+  courseId: null,
   courseOrg: null,
   courseNumber: null,
   courseTitle: null,

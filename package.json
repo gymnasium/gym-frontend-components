@@ -1,6 +1,6 @@
 {
   "name": "gym-frontend-components",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Gymnasium-specific front-end settings, header & footer, head meta, plus helper functions.",
   "repository": {
     "type": "git",
