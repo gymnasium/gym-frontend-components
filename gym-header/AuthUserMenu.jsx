@@ -18,7 +18,7 @@ const AuthUserMenu = ({secondaryNav}) => {
     activeClass = 'active';
   };
   return (
-  <ul className="auth" role="list">
+  <ul className="auth logged-in" role="list">
     <li key="auth-item-1"><a
       href={`${getLmsUrl()}/dashboard`}
       aria-current={activeAria}
