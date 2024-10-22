@@ -89,7 +89,7 @@ const GymHeader = ({
       )}
       {/* Course Header - this is duplicated in the theme */}
       {secondaryNav === `courses` && (courseOrg !== null && courseNumber !== null && courseTitle !== null) && (
-        <div id="course-header" className="course-header" data-course-id={courseId} data-course-num={courseNumber}>
+        <div id="course-header" className="course-header" data-ugly-course-id={courseId} data-course-num={courseNumber}>
           <div className="container">
             <span className="course-id">{courseOrg}-{courseNumber}</span>
             <span className="course-title">{courseTitle}</span>
