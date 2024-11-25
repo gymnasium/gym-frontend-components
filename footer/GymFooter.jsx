@@ -46,13 +46,9 @@ class GymFooter extends React.Component {
 
 GymFooter.contextType = AppContext;
 
-GymFooter.propTypes = {
+GymFooter.propTypes = {};
 
-};
-
-GymFooter.defaultProps = {
-
-};
+GymFooter.defaultProps = {};
 
 export default GymFooter;
 export { EVENT_NAMES };
