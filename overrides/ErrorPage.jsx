@@ -4,7 +4,7 @@ import {
   Container
 } from '@openedx/paragon';
 
-import { GymErrors, GymFooter, GymHeader } from '/@openedx/gym-frontend';
+import { GymErrors, GymFooter, GymHeader } from '@openedx/gym-frontend';
 
 import { useAppEvent } from '@edx/frontend-platform/react/hooks';
 import {
