@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { logError } from '@edx/frontend-platform/logging';
 
-import { ErrorPage, AppContext } from '@edx/frontend-platform/react';
+import { AppContext } from '@edx/frontend-platform/react';
 import { Alert } from '@openedx/paragon';
 
 import { RequestKeys } from 'data/constants/requests';
@@ -14,7 +14,7 @@ import {
   actions,
 } from 'data/redux';
 import { reduxHooks } from 'hooks';
-import Dashboard from 'containers/Dashboard';
+import Dashboard from './containers/Dashboard';
 
 import track from 'tracking';
 
@@ -24,12 +24,12 @@ import AppWrapper from 'containers/WidgetContainers/AppWrapper';
 
 import { getConfig } from '@edx/frontend-platform';
 
-import { GymFooter as FooterSlot, GymHeader } from '@openedx/gym-frontend';
+import { ErrorPage, GymFooter as FooterSlot, GymHeader } from '@openedx/gym-frontend';
 
-import messages from '@src/messages';
+import messages from 'messages';
 import './App.scss';
 
-import {Intercom, update } from "@intercom/messenger-js-sdk";
+import { Intercom, update } from "@intercom/messenger-js-sdk";
 
 const INTERCOM_APP_ID = () => getConfig().INTERCOM_APP_ID;
 
