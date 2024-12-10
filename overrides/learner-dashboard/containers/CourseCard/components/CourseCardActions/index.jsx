@@ -22,6 +22,7 @@ import {
 import messages from '@src/containers/CourseCard/components/CourseCardMenu/messages';
 
 export const CourseCardActions = ({ cardId }) => {
+  const certificate = reduxHooks.useCardCertificateData(cardId);
   const { isEntitlement, isFulfilled } = reduxHooks.useCardEntitlementData(cardId);
   const {
     isVerified,
@@ -46,10 +47,13 @@ export const CourseCardActions = ({ cardId }) => {
       {(isArchived && !isEntitlement) && (
         <ViewCourseButton cardId={cardId} />
       )}
-      {!(isArchived || isEntitlement) && (hasStarted
+      {!(isArchived || isEntitlement || certificate.isDownloadable) && (hasStarted
         ? <ResumeButton cardId={cardId} />
         : <BeginCourseButton cardId={cardId} />
       )}
+      {certificate.isDownloadable && 
+        <ViewCourseButton cardId={cardId} />
+      }
       {shouldShowUnenrollItem && (
         <>
           <Button
