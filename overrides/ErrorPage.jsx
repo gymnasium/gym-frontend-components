@@ -1,18 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Container
 } from '@openedx/paragon';
 
 import { GymErrors, GymFooter, GymHeader } from '@openedx/gym-frontend';
-
-import { useAppEvent } from '@edx/frontend-platform/react/hooks';
-import {
-  IntlProvider,
-  getMessages,
-  getLocale,
-  LOCALE_CHANGED,
-} from '@edx/frontend-platform/i18n';
 
 /**
  * An error page that displays a generic message for unexpected errors.  Also contains a "Try
@@ -24,22 +16,17 @@ import {
 function ErrorPage({
   message,
 }) {
-  const [locale, setLocale] = useState(getLocale());
-
-  useAppEvent(LOCALE_CHANGED, () => {
-    setLocale(getLocale());
-  });
 
   return (
-    <IntlProvider locale={locale} messages={getMessages()}>
-      <GymHeader/>
+    <>
+      <GymHeader />
       <main>
         <Container fluid={false} data-testid="error-page">
           <GymErrors type="unknown" button="refresh" message={message} />
         </Container>
       </main>
-      <GymFooter/>
-    </IntlProvider>
+      <GymFooter />
+    </>
   );
 }
 
@@ -51,4 +38,5 @@ ErrorPage.defaultProps = {
   message: null,
 };
 
+export { ErrorPage };
 export default ErrorPage;
