@@ -29,7 +29,8 @@ class ErrorBoundary extends Component {
 
   render() {
     if (this.state.hasError) {
-      return this.props.fallbackComponent || <ErrorPage message={`${this.state.message}`} />
+      const errorMessage = this.state.message ? `${this.state.message}` : null;
+      return this.props.fallbackComponent || <ErrorPage message={errorMessage} />
     }
     return this.props.children;
   }

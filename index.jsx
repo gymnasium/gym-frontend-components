@@ -5,4 +5,4 @@ import GymMeta from './meta/GymMeta';
 import { LearnerDashboard, ErrorPage } from './overrides/';
 import { htmlDecode, slugify, timestamp } from './helpers';
 
-export { ErrorPage, GymFooter, GymHeader, GymMeta, GymErrors, htmlDecode, LearnerDashboard, slugify, timestamp };
+export { ErrorPage, GymFooter, GymHeader, GymMeta, GymErrors, htmlDecode, slugify, timestamp };

@@ -7,26 +7,26 @@ import { logError } from '@edx/frontend-platform/logging';
 import { AppContext } from '@edx/frontend-platform/react';
 import { Alert } from '@openedx/paragon';
 
-import { RequestKeys } from 'data/constants/requests';
-import store from 'data/store';
+import { RequestKeys } from '@src/data/constants/requests';
+import store from '@src/data/store';
 import {
   selectors,
   actions,
-} from 'data/redux';
-import { reduxHooks } from 'hooks';
+} from '@src/data/redux';
+import { reduxHooks } from '@src/hooks';
 import Dashboard from './containers/Dashboard';
 
-import track from 'tracking';
+import track from '@src/tracking';
 
-import fakeData from 'data/services/lms/fakeData/courses';
+import fakeData from '@src/data/services/lms/fakeData/courses';
 
-import AppWrapper from 'containers/WidgetContainers/AppWrapper';
+import AppWrapper from '@src/containers/WidgetContainers/AppWrapper';
 
 import { getConfig } from '@edx/frontend-platform';
 
 import { ErrorPage, GymFooter as FooterSlot, GymHeader } from '@openedx/gym-frontend';
 
-import messages from 'messages';
+import messages from '@src/messages';
 import './App.scss';
 
 import { Intercom, update } from "@intercom/messenger-js-sdk";
