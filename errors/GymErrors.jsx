@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
-import { htmlDecode } from '../helpers';
 import dompurify from 'dompurify';
 import {
-  Button, Container
+  Button
 } from '@openedx/paragon';
 import { Refresh } from '@openedx/paragon/icons';
 
@@ -37,6 +36,7 @@ const GymErrors = ({
   const links = errorMsg()?.links || null;
   const footer_text = { __html: dompurify.sanitize(errorMsg()[`error_${type}`]?.footer || errorMsg()?.footer) }
   const show_links = errorMsg()[`error_${type}`]?.show_links;
+
   return (
     <div className="main-panel">
       <article>
@@ -66,6 +66,13 @@ const GymErrors = ({
             </Button>
           </p>
         )}
+
+        {message && (
+          <div role="alert" className="alert">
+            <p>{message}</p>
+          </div>
+        )}
+
         {show_links && links && (
           <ul>
             {links.map((item, index) => {
@@ -84,6 +91,7 @@ const GymErrors = ({
 };
 
 GymErrors.propTypes = {
+  message: PropTypes.string,
   type: PropTypes.string,
   heading: PropTypes.string,
   description: PropTypes.string,
@@ -91,6 +99,7 @@ GymErrors.propTypes = {
 };
 
 GymErrors.defaultProps = {
+  message: null,
   type: '',
   heading: '',
   description: '',
