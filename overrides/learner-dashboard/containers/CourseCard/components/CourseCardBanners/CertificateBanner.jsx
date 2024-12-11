@@ -1,13 +1,14 @@
 /* eslint-disable max-len */
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { MailtoLink, Hyperlink } from '@openedx/paragon';
 import { CheckCircle } from '@openedx/paragon/icons';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
-import { utilHooks, reduxHooks } from 'hooks';
-import Banner from 'components/Banner';
+import { utilHooks, reduxHooks } from '@src/hooks';
+import Banner from '@src/components/Banner';
+import useCardDetailsData from '@src/containers/CourseCard/components/CourseCardDetails/hooks';
 
 import messages from './messages';
 
@@ -20,20 +21,18 @@ export const CertificateBanner = ({ cardId }) => {
     isVerified,
   } = reduxHooks.useCardEnrollmentData(cardId);
   const { isPassing } = reduxHooks.useCardGradeData(cardId);
-  const { courseId, isArchived, minPassingGrade, progressUrl } = reduxHooks.useCardCourseRunData(cardId);
+  const { 
+    courseId,
+    isArchived,
+    minPassingGrade,
+    progressUrl
+  } = reduxHooks.useCardCourseRunData(cardId);
   const { supportEmail, billingEmail } = reduxHooks.usePlatformSettingsData();
   const { formatMessage } = useIntl();
   const formatDate = useFormatDate();
-  const [courseNum, setCourseNum] = useState(null);
+  const { courseNumber } = useCardDetailsData({ cardId });
 
   const emailLink = address => <MailtoLink to={address}>{address}</MailtoLink>;
-
-  // Use REGEX to get numeric course id? Seems like there should be a different way of doing this
-  useMemo(() => {
-    const regex = /course-v1:.*?\+(.*?)\+/;
-    const match = courseId.match(regex);
-    setCourseNum(match[1]);
-  }, [courseId]);
 
   if (certificate.isRestricted) {
     return (
@@ -47,12 +46,12 @@ export const CertificateBanner = ({ cardId }) => {
   if (certificate.isDownloadable) {
     return (
       <Banner variant="success" icon={CheckCircle}>
-        {parseInt(courseNum) >= 100 ? formatMessage(messages.certReady) : formatMessage(messages.badgeReady)}
+        {parseInt(courseNumber) >= 100 ? formatMessage(messages.certReady) : formatMessage(messages.badgeReady)}
         {certificate.certPreviewUrl && (
           <>
             {'  '}
             <Hyperlink isInline destination={certificate.certPreviewUrl}>
-              {parseInt(courseNum) >= 100 ? formatMessage(messages.viewCertificate) : formatMessage(messages.viewBadge)}
+              {parseInt(courseNumber) >= 100 ? formatMessage(messages.viewCertificate) : formatMessage(messages.viewBadge)}
             </Hyperlink>
           </>
         )}

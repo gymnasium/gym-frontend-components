@@ -46,4 +46,5 @@ ErrorBoundary.defaultProps = {
   fallbackComponent: undefined,
 };
 
+export { ErrorBoundary };
 export default ErrorBoundary;
