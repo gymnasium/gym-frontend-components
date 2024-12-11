@@ -126,6 +126,11 @@ const messages = defineMessages({
     description: 'Course has not started message',
     defaultMessage: 'You can\'t access this course just yet because the course hasn\'t started yet. The course will start on {startDate}.',
   },
+  courseRetired: {
+    id: 'learner-dash.courseCard.banners.courseRetired',
+    description: 'Course is retired message',
+    defaultMessage: 'This course has been retired.',
+  }
 });
 
 export default messages;

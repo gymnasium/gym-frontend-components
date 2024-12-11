@@ -10,6 +10,7 @@ import SelectSessionButton from '@src/containers/CourseCard/components/CourseCar
 import BeginCourseButton from '@src/containers/CourseCard/components/CourseCardActions/BeginCourseButton';
 import ResumeButton from '@src/containers/CourseCard/components/CourseCardActions/ResumeButton';
 import ViewCourseButton from '@src/containers/CourseCard/components/CourseCardActions/ViewCourseButton';
+import ViewRetiredCourseButton from './ViewRetiredCourseButton';
 
 import EmailSettingsModal from '@src/containers/EmailSettingsModal';
 import UnenrollConfirmModal from '@src/containers/UnenrollConfirmModal';
@@ -45,7 +46,7 @@ export const CourseCardActions = ({ cardId }) => {
         : <SelectSessionButton cardId={cardId} />
       )}
       {(isArchived && !isEntitlement) && (
-        <ViewCourseButton cardId={cardId} />
+        <ViewRetiredCourseButton cardId={cardId} />
       )}
       {!(isArchived || isEntitlement || certificate.isDownloadable) && (hasStarted
         ? <ResumeButton cardId={cardId} />

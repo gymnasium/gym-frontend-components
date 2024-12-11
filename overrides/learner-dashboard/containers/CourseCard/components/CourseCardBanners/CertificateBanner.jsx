@@ -21,12 +21,8 @@ export const CertificateBanner = ({ cardId }) => {
     isVerified,
   } = reduxHooks.useCardEnrollmentData(cardId);
   const { isPassing } = reduxHooks.useCardGradeData(cardId);
-  const { 
-    courseId,
-    isArchived,
-    minPassingGrade,
-    progressUrl
-  } = reduxHooks.useCardCourseRunData(cardId);
+  const { isArchived } = reduxHooks.useCardCourseRunData(cardId);
+  const { minPassingGrade } = reduxHooks.useCardCourseRunData(cardId);
   const { supportEmail, billingEmail } = reduxHooks.usePlatformSettingsData();
   const { formatMessage } = useIntl();
   const formatDate = useFormatDate();
@@ -59,19 +55,17 @@ export const CertificateBanner = ({ cardId }) => {
     );
   }
   if (!isPassing) {
+    if (isArchived) {
+      return (
+        <Banner variant="danger">
+          {formatMessage(messages.courseRetired)}
+        </Banner>
+      );
+    }
     if (isAudit) {
       return (
         <Banner>
           {formatMessage(messages.passingGrade, { minPassingGrade })}
-        </Banner>
-      );
-    }
-    if (isArchived) {
-      return (
-        <Banner variant="warning">
-          {formatMessage(messages.notEligibleForCert)}
-          {'  '}
-          <Hyperlink isInline destination={progressUrl}>{formatMessage(messages.viewGrades)}</Hyperlink>
         </Banner>
       );
     }
