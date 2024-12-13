@@ -17,7 +17,7 @@ import { CourseExit } from '@src/courseware/course/course-exit';
 import CoursewareContainer from '@src/courseware';
 import CoursewareRedirectLandingPage from '@src/courseware/CoursewareRedirectLandingPage';
 import DatesTab from '@src/course-home/dates-tab';
-import GoalUnsubscribe from '@src/course-home/goal-unsubscribe';
+import GoalUnsubscribe from './course-home/goal-unsubscribe';
 import ProgressTab from './course-home/progress-tab/ProgressTab';
 import { TabContainer } from './tab-page';
 
