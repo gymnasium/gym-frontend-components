@@ -9,11 +9,10 @@ import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { Email } from '@openedx/paragon/icons';
 import { useSelector } from 'react-redux';
-import messages from '../messages';
-import LearningGoalButton from './LearningGoalButton';
+import messages from '@src/course-home/outline-tab/messages';
+import LearningGoalButton from '@src/course-home/outline-tab/widgets/LearningGoalButton';
 import { saveWeeklyLearningGoal } from '../../data';
-import { useModel } from '../../../generic/model-store';
-import './FlagButton.scss';
+import { useModel } from '@src/generic/model-store';
 
 const WeeklyLearningGoalCard = ({
   daysPerWeek,

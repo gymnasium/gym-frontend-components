@@ -6,10 +6,10 @@ import { Alert, Button, TransitionReplace } from '@openedx/paragon';
 import truncate from 'truncate-html';
 
 import { useDispatch } from 'react-redux';
-import LmsHtmlFragment from '../LmsHtmlFragment';
-import messages from '../messages';
-import { useModel } from '../../../generic/model-store';
-import { dismissWelcomeMessage } from '../../data/thunks';
+import SanitizeHtmlFragment from '../../../generic/SanitizeHtmlFragment';
+import messages from '@src/course-home/outline-tab/messages';
+import { useModel } from '@src/generic/model-store';
+import { dismissWelcomeMessage } from '@src/course-home/data/thunks';
 
 const WelcomeMessage = ({ courseId, intl }) => {
   const {
@@ -65,7 +65,7 @@ const WelcomeMessage = ({ courseId, intl }) => {
     >
       <TransitionReplace className="mb-3" enterDuration={400} exitDuration={200}>
         {showShortMessage ? (
-          <LmsHtmlFragment
+          <SanitizeHtmlFragment
             className="inline-link"
             data-testid="short-welcome-message-iframe"
             key="short-html"
@@ -73,7 +73,7 @@ const WelcomeMessage = ({ courseId, intl }) => {
             title={intl.formatMessage(messages.welcomeMessage)}
           />
         ) : (
-          <LmsHtmlFragment
+          <SanitizeHtmlFragment
             className="inline-link"
             data-testid="long-welcome-message-iframe"
             key="full-html"

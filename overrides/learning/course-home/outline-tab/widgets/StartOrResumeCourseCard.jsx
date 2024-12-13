@@ -4,8 +4,8 @@ import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 
 import { useSelector } from 'react-redux';
 import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
-import messages from '../messages';
-import { useModel } from '../../../generic/model-store';
+import messages from '@src/course-home/outline-tab/messages';
+import { useModel } from '@src/generic/model-store';
 
 const StartOrResumeCourseCard = ({ intl }) => {
   const {
@@ -41,7 +41,7 @@ const StartOrResumeCourseCard = ({ intl }) => {
   };
 
   return (
-    <Card className="mb-3 raised-card" data-testid="start-resume-card">
+    <Card className="start-resume-card mb-3 raised-card" data-testid="start-resume-card">
       <Card.Header
         title={hasVisitedCourse ? intl.formatMessage(messages.resumeBlurb) : intl.formatMessage(messages.startBlurb)}
         actions={(

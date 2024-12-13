@@ -10,9 +10,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faNewspaper } from '@fortawesome/free-regular-svg-icons';
 
-import messages from '../messages';
-import { useModel } from '../../../generic/model-store';
-import LaunchCourseHomeTourButton from '../../../product-tours/newUserCourseHomeTour/LaunchCourseHomeTourButton';
+import messages from '@src/course-home/outline-tab/messages';
+import { useModel } from '@src/generic/model-store';
+import LaunchCourseHomeTourButton from '@src/product-tours/newUserCourseHomeTour/LaunchCourseHomeTourButton';
 
 const CourseTools = ({ intl }) => {
   const {
@@ -62,7 +62,7 @@ const CourseTools = ({ intl }) => {
   };
 
   return (
-    <section className="mb-4">
+    <section className="sidebar-course-tools mb-4">
       <h2 className="h4">{intl.formatMessage(messages.tools)}</h2>
       <ul className="list-unstyled">
         {courseTools.map((courseTool) => (

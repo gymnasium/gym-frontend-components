@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 
-import LmsHtmlFragment from '../LmsHtmlFragment';
-import messages from '../messages';
-import { useModel } from '../../../generic/model-store';
+import SanitizeHtmlFragment from '../../../generic/SanitizeHtmlFragment';
+import messages from '@src/course-home/outline-tab/messages';
+import { useModel } from '@src/generic/model-store';
 
 const CourseHandouts = ({ intl }) => {
   const {
@@ -20,12 +20,11 @@ const CourseHandouts = ({ intl }) => {
   }
 
   return (
-    <section className="mb-4">
+    <section className="sidebar-course-handouts mb-4">
       <h2 className="h4">{intl.formatMessage(messages.handouts)}</h2>
-      <LmsHtmlFragment
+      <SanitizeHtmlFragment
         className="small"
         html={handoutsHtml}
-        title={intl.formatMessage(messages.handouts)}
       />
     </section>
   );
