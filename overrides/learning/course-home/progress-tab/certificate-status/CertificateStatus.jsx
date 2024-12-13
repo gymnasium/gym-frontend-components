@@ -8,11 +8,11 @@ import {
 
 import { Button, Card } from '@openedx/paragon';
 import { getConfig } from '@edx/frontend-platform';
-import { useModel } from '../../../generic/model-store';
-import { COURSE_EXIT_MODES, getCourseExitMode } from '../../../courseware/course/course-exit/utils';
-import { DashboardLink, IdVerificationSupportLink, ProfileLink } from '../../../shared/links';
-import { requestCert } from '../../data/thunks';
-import messages from './messages';
+import { useModel } from '@src/generic/model-store';
+import { COURSE_EXIT_MODES, getCourseExitMode } from '@src/courseware/course/course-exit/utils';
+import { DashboardLink, IdVerificationSupportLink, ProfileLink } from '@src/shared/links';
+import { requestCert } from '@src/course-home/data/thunks';
+import messages from '@src/course-home/progress-tab/certificate-status/messages';
 
 const CertificateStatus = ({ intl }) => {
   const {

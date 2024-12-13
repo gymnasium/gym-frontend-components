@@ -4,11 +4,11 @@ import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 
 // import { LearningHeader as Header } from '@edx/frontend-component-header';
-import PageLoading from '../../generic/PageLoading';
-import { unsubscribeFromCourseGoal } from '../data/api';
+import PageLoading from '@src/generic/PageLoading';
+import { unsubscribeFromCourseGoal } from '@src/course-home/data/api';
 
-import messages from './messages';
-import ResultPage from './ResultPage';
+import messages from '@src/course-home/goal-unsubscribe/messages';
+import ResultPage from '@src/course-home/goal-unsubscribe/ResultPage';
 
 import { GymHeader } from '@openedx/gym-frontend';
 

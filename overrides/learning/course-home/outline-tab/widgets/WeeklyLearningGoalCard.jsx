@@ -11,7 +11,7 @@ import { Email } from '@openedx/paragon/icons';
 import { useSelector } from 'react-redux';
 import messages from '@src/course-home/outline-tab/messages';
 import LearningGoalButton from '@src/course-home/outline-tab/widgets/LearningGoalButton';
-import { saveWeeklyLearningGoal } from '../../data';
+import { saveWeeklyLearningGoal } from '@src/course-home/data';
 import { useModel } from '@src/generic/model-store';
 
 const WeeklyLearningGoalCard = ({

@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 
 import DateSummary from '../DateSummary';
-import messages from '../messages';
-import { useModel } from '../../../generic/model-store';
+import messages from '@src/course-home/outline-tab/messages';
+import { useModel } from '@src/generic/model-store';
 
 const CourseDates = ({
   intl,
