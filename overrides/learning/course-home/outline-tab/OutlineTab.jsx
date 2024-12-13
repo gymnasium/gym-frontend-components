@@ -5,6 +5,7 @@ import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { Button } from '@openedx/paragon';
+import { PluginSlot } from '@openedx/frontend-plugin-framework';
 import { AlertList } from '@src/generic/user-messages';
 
 import CourseDates from './widgets/CourseDates';
@@ -123,6 +124,24 @@ const OutlineTab = ({ intl }) => {
     }
   }, [location.search]);
 
+  const {
+    resumeCourse: {
+      hasVisitedCourse,
+    },
+  } = useModel('outline', courseId);
+
+  let sectionOpen;
+
+  function openIndex(ident, index) {
+    const sectionCount = courses[ident].sectionIds.length;
+    if (sectionCount <= 2) {
+      sectionOpen = index <= sectionCount - 1 ? true : false;
+    } else {
+      sectionOpen = index === 0 ? true : false;
+    }
+    return sectionOpen;
+  }
+
   return (
     <>
       <div data-learner-type={learnerType} className="row w-100 mx-0 my-3 justify-content-between">
@@ -161,19 +180,24 @@ const OutlineTab = ({ intl }) => {
           <WelcomeMessage courseId={courseId} />
           {rootCourseId && (
             <>
-              <div className="row w-100 m-0 mb-3 justify-content-end">
+              {/* Disable expand/contract button */}
+              {/* <div className="expand-collapse-button-wrapper row w-100 m-0 mb-3 justify-content-end">
                 <div className="col-12 col-md-auto p-0">
                   <Button variant="outline-primary" block onClick={() => { setExpandAll(!expandAll); }}>
                     {expandAll ? intl.formatMessage(messages.collapseAll) : intl.formatMessage(messages.expandAll)}
                   </Button>
                 </div>
-              </div>
+              </div> */}
               <ol id="courseHome-outline" className="list-unstyled">
-                {courses[rootCourseId].sectionIds.map((sectionId) => (
+                {courses[rootCourseId].sectionIds.map((sectionId, index) => (
+                  // there's probably a more elegant way of doing this... for first time visitors who haven't started the course, forces the first section open for full courses, and all sections open for short courses with only two or less sections.
+                  !hasVisitedCourse
+                    ? openIndex(rootCourseId, index)
+                    : (sectionOpen = sections[sectionId].resumeBlock),
                   <Section
                     key={sectionId}
                     courseId={courseId}
-                    defaultOpen={sections[sectionId].resumeBlock}
+                    defaultOpen={sectionOpen}
                     expand={expandAll}
                     section={sections[sectionId]}
                   />
@@ -194,19 +218,27 @@ const OutlineTab = ({ intl }) => {
               />
             )}
             <CourseTools />
-            <UpgradeNotification
-              offer={offer}
-              verifiedMode={verifiedMode}
-              accessExpiration={accessExpiration}
-              contentTypeGatingEnabled={datesBannerInfo.contentTypeGatingEnabled}
-              marketingUrl={marketingUrl}
-              upsellPageName="course_home"
-              userTimezone={userTimezone}
-              shouldDisplayBorder
-              timeOffsetMillis={timeOffsetMillis}
-              courseId={courseId}
-              org={org}
-            />
+            <PluginSlot
+              id="outline_tab_notifications_slot"
+              pluginProps={{
+                courseId,
+                model: 'outline',
+              }}
+            >
+              <UpgradeNotification
+                offer={offer}
+                verifiedMode={verifiedMode}
+                accessExpiration={accessExpiration}
+                contentTypeGatingEnabled={datesBannerInfo.contentTypeGatingEnabled}
+                marketingUrl={marketingUrl}
+                upsellPageName="course_home"
+                userTimezone={userTimezone}
+                shouldDisplayBorder
+                timeOffsetMillis={timeOffsetMillis}
+                courseId={courseId}
+                org={org}
+              />
+            </PluginSlot>
             <CourseDates />
             <CourseHandouts />
           </div>
