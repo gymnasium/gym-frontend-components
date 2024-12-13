@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import classNames from 'classnames';
 
-import messages from './messages';
-import Tabs from '../generic/tabs/Tabs';
-import { CoursewareSearch, CoursewareSearchToggle } from '../course-home/courseware-search';
-import { useCoursewareSearchState } from '../course-home/courseware-search/hooks';
+import messages from '@src/course-tabs/messages';
+import Tabs from '@src/generic/tabs/Tabs';
+import { CoursewareSearch, CoursewareSearchToggle } from '@src/course-home/courseware-search';
+import { useCoursewareSearchState } from '@src/course-home/courseware-search/hooks';
 
 const CourseTabsNavigation = ({
   activeTabSlug, className, tabs, intl,
@@ -22,7 +22,10 @@ const CourseTabsNavigation = ({
               className="nav-underline-tabs"
               aria-label={intl.formatMessage(messages.courseMaterial)}
             >
-              {tabs.map(({ url, title, slug }) => (
+              {tabs.map(({ url, title, slug }) => {
+                // Change tab titles
+                title = title.replace('Course', 'Lessons').replace('Discussion', 'Forum')
+                return (
                 <a
                   key={slug}
                   className={classNames('nav-item flex-shrink-0 nav-link', { active: slug === activeTabSlug })}
@@ -30,7 +33,7 @@ const CourseTabsNavigation = ({
                 >
                   {title}
                 </a>
-              ))}
+              )})}
             </Tabs>
           </div>
           <div className="search-toggle">
