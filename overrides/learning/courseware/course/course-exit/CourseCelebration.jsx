@@ -18,21 +18,21 @@ import { CheckCircle } from '@openedx/paragon/icons';
 import { getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 
-import CelebrationMobile from './assets/celebration_456x328.gif';
-import CelebrationDesktop from './assets/celebration_750x540.gif';
-import certificate from '../../../generic/assets/edX_certificate.png';
-import certificateLocked from '../../../generic/assets/edX_locked_certificate.png';
-import { FormattedPricing } from '../../../generic/upgrade-button';
-import messages from './messages';
-import { useModel } from '../../../generic/model-store';
-import { requestCert } from '../../../course-home/data/thunks';
-import ProgramCompletion from './ProgramCompletion';
-import DashboardFootnote from './DashboardFootnote';
-import UpgradeFootnote from './UpgradeFootnote';
-import SocialIcons from '../../social-share/SocialIcons';
-import { logClick, logVisit } from './utils';
-import { DashboardLink, IdVerificationSupportLink, ProfileLink } from '../../../shared/links';
-import CourseRecommendations from './CourseRecommendations';
+import CelebrationMobile from '@src/courseware/course/course-exit/assets/celebration_456x328.gif';
+import CelebrationDesktop from '@src/courseware/course/course-exit/assets/celebration_750x540.gif';
+import certificate from '@src/generic/assets/edX_certificate.png';
+import certificateLocked from '@src/generic/assets/edX_locked_certificate.png';
+import { FormattedPricing } from '@src/generic/upgrade-button';
+import messages from '@src/courseware/course/course-exit/messages';
+import { useModel } from '@src/generic/model-store';
+import { requestCert } from '@src/course-home/data/thunks';
+import ProgramCompletion from '@src/courseware/course/course-exit/ProgramCompletion';
+import DashboardFootnote from '@src/courseware/course/course-exit/DashboardFootnote';
+import UpgradeFootnote from '@src/courseware/course/course-exit/UpgradeFootnote';
+import SocialIcons from '@src/courseware/social-share/SocialIcons';
+import { logClick, logVisit } from '@src/courseware/course/course-exit/utils';
+import { DashboardLink, IdVerificationSupportLink, ProfileLink } from '@src/shared/links';
+import CourseRecommendations from '@src/courseware/course/course-exit/CourseRecommendations';
 
 const LINKEDIN_BLUE = '#2867B2';
 
@@ -100,8 +100,9 @@ const CourseCelebration = ({ intl }) => {
           />
         </p>
       );
+      // TODO: for Gymnasium, update the buttonLocation
       if (certWebViewUrl) {
-        buttonLocation = `${getConfig().LMS_BASE_URL}${certWebViewUrl}`;
+        buttonLocation = `${certWebViewUrl}`;
         buttonText = intl.formatMessage(messages.viewCertificateButton);
       }
       if (linkedinAddToProfileUrl) {

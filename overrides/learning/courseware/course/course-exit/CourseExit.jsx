@@ -7,13 +7,13 @@ import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 import CourseCelebration from './CourseCelebration';
-import CourseInProgress from './CourseInProgress';
-import CourseNonPassing from './CourseNonPassing';
-import { COURSE_EXIT_MODES, getCourseExitMode } from './utils';
-import messages from './messages';
-import { unsubscribeFromGoalReminders } from './data/thunks';
+import CourseInProgress from '@src/courseware/course/course-exit/CourseInProgress';
+import CourseNonPassing from '@src/courseware/course/course-exit/CourseNonPassing';
+import { COURSE_EXIT_MODES, getCourseExitMode } from '@src/courseware/course/course-exit/utils';
+import messages from '@src/courseware/course/course-exit/messages';
+import { unsubscribeFromGoalReminders } from '@src/courseware/course/course-exit/data/thunks';
 
-import { useModel } from '../../../generic/model-store';
+import { useModel } from '@src/generic/model-store';
 
 const CourseExit = ({ intl }) => {
   const { courseId } = useSelector(state => state.courseware);
