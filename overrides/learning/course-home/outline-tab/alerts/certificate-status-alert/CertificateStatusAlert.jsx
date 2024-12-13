@@ -12,11 +12,12 @@ import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { getConfig } from '@edx/frontend-platform';
+import { logInfo } from '@edx/frontend-platform/logging';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
-import certMessages from './messages';
-import certStatusMessages from '../../../progress-tab/certificate-status/messages';
-import { requestCert } from '../../../data/thunks';
+import certMessages from '@src/course-home/outline-tab/alerts/certificate-status-alert/messages';
+import certStatusMessages from '@src/course-home/progress-tab/certificate-status/messages';
+import { requestCert } from '@src/course-home/data/thunks';
 
 export const CERT_STATUS_TYPE = {
   EARNED_NOT_AVAILABLE: 'earned_but_not_available',
@@ -50,6 +51,8 @@ const CertificateStatusAlert = ({ intl, payload }) => {
       is_staff: administrator,
     });
   };
+
+  logInfo(`certStatus: `, certStatus);
 
   const renderCertAwardedStatus = () => {
     const alertProps = {
@@ -86,9 +89,9 @@ const CertificateStatusAlert = ({ intl, payload }) => {
       };
     } else if (certStatus === CERT_STATUS_TYPE.REQUESTING) {
       alertProps.header = intl.formatMessage(certMessages.certStatusDownloadableHeader);
-      alertProps.buttonMessage = intl.formatMessage(certStatusMessages.requestableButton);
+      alertProps.buttonMessage = intl.formatMessage(certStatusMessages.viewableButton);
       alertProps.buttonVisible = true;
-      alertProps.buttonLink = '';
+      alertProps.buttonLink = certURL;
       alertProps.buttonAction = () => {
         sendAlertClickTracking('edx.ui.lms.course_outline.certificate_alert_request_cert_button.clicked');
         dispatch(requestCert(courseId));
@@ -163,29 +166,31 @@ const CertificateStatusAlert = ({ intl, payload }) => {
         buttonLink,
         buttonMessage,
       }) => (
-        <Alert variant={variant}>
-          <div className="d-flex flex-column flex-lg-row justify-content-between align-items-center">
-            <div className={buttonVisible ? 'col-lg-8' : 'col-auto'}>
-              <FontAwesomeIcon icon={icon} className={iconClassName} />
-              <Alert.Heading>{header}</Alert.Heading>
-              {body}
-            </div>
-            {buttonVisible && (
-              <div className="flex-grow-0 pt-3 pt-lg-0">
-                <Button
-                  variant="primary"
-                  href={buttonLink}
-                  onClick={() => {
-                    if (buttonAction) { buttonAction(); }
-                  }}
-                >
-                  {buttonMessage}
-                </Button>
+        logInfo(`certURL: `, certURL),
+        certURL && (
+          <Alert variant={variant}>
+            <div className="d-flex flex-column flex-lg-row justify-content-between align-items-center">
+              <div className={buttonVisible ? 'col-lg-8' : 'col-auto'}>
+                <FontAwesomeIcon icon={icon} className={iconClassName} />
+                <Alert.Heading>{header}</Alert.Heading>
+                {body}
               </div>
-            )}
-          </div>
-        </Alert>
-
+              {buttonVisible && (
+                <div className="flex-grow-0 pt-3 pt-lg-0">
+                  <Button
+                    variant="primary"
+                    href={buttonLink}
+                    onClick={() => {
+                      if (buttonAction) { buttonAction(); }
+                    }}
+                  >
+                    {buttonMessage}
+                  </Button>
+                </div>
+              )}
+            </div>
+          </Alert>
+        )
       )}
     </AlertWrapper>
   );
