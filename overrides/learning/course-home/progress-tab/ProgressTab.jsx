@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux';
 import { breakpoints, useWindowSize } from '@openedx/paragon';
 
 import CertificateStatus from './certificate-status/CertificateStatus';
-import CourseCompletion from './course-completion/CourseCompletion';
-import CourseGrade from './grades/course-grade/CourseGrade';
-import DetailedGrades from './grades/detailed-grades/DetailedGrades';
-import GradeSummary from './grades/grade-summary/GradeSummary';
-import ProgressHeader from './ProgressHeader';
-import RelatedLinks from './related-links/RelatedLinks';
+import CourseCompletion from '@src/course-home/progress-tab/course-completion/CourseCompletion';
+import CourseGrade from '@src/course-home/progress-tab/grades/course-grade/CourseGrade';
+import DetailedGrades from '@src/course-home/progress-tab/grades/detailed-grades/DetailedGrades';
+import GradeSummary from '@src/course-home/progress-tab/grades/grade-summary/GradeSummary';
+import ProgressHeader from '@src/course-home/progress-tab/ProgressHeader';
+import RelatedLinks from '@src/course-home/progress-tab/related-links/RelatedLinks';
 
-import { useModel } from '../../generic/model-store';
+import { useModel } from '@src/generic/model-store';
 
 const ProgressTab = () => {
   const {
@@ -33,11 +33,11 @@ const ProgressTab = () => {
 
   const wideScreen = windowWidth >= breakpoints.large.minWidth;
   return (
-    <>
+    <div className="progress-tab-content">
       <ProgressHeader />
-      <div className="row w-100 m-0">
+      <div className="content-panels row w-100 m-0">
         {/* Main body */}
-        <div className="col-12 col-md-8 p-0">
+        <div className="main-panel col-12 col-md-8 p-0">
           {!disableProgressGraph && <CourseCompletion />}
           {!wideScreen && <CertificateStatus />}
           <CourseGrade />
@@ -48,12 +48,12 @@ const ProgressTab = () => {
         </div>
 
         {/* Side panel */}
-        <div className="col-12 col-md-4 p-0 px-md-4">
+        <div className="side-panel col-12 col-md-4 p-0 px-md-4">
           {wideScreen && <CertificateStatus />}
           <RelatedLinks />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

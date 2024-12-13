@@ -60,6 +60,7 @@ const CertificateStatus = ({ intl }) => {
   const { administrator } = getAuthenticatedUser();
 
   let certStatus;
+  // TODO: for Gymnasium, update certWebViewUrl to use Accredible's endpoint
   let certWebViewUrl;
   const timezoneFormatArgs = userTimezone ? { timeZone: userTimezone } : {};
 
@@ -143,7 +144,7 @@ const CertificateStatus = ({ intl }) => {
         );
         if (certWebViewUrl) {
           certEventName = 'earned_viewable';
-          buttonLocation = `${getConfig().LMS_BASE_URL}${certWebViewUrl}`;
+          buttonLocation = `${certWebViewUrl}`;
           buttonText = intl.formatMessage(messages.viewableButton);
         }
         break;
