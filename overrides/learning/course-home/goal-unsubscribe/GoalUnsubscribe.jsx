@@ -3,12 +3,14 @@ import { useParams } from 'react-router-dom';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 
-import HeaderSlot from '../../plugin-slots/HeaderSlot';
+// import { LearningHeader as Header } from '@edx/frontend-component-header';
 import PageLoading from '../../generic/PageLoading';
 import { unsubscribeFromCourseGoal } from '../data/api';
 
 import messages from './messages';
 import ResultPage from './ResultPage';
+
+import { GymHeader } from '@openedx/gym-frontend';
 
 const GoalUnsubscribe = ({ intl }) => {
   const { token } = useParams();
@@ -38,7 +40,7 @@ const GoalUnsubscribe = ({ intl }) => {
 
   return (
     <>
-      <HeaderSlot showUserDropdown={false} />
+      <GymHeader secondaryNav="courses" activeLink="courses" />
       <main id="main-content" className="container my-5 text-center">
         {isLoading && (
           <PageLoading srMessage={`${intl.formatMessage(messages.loading)}`} />
