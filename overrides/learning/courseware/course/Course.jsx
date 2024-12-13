@@ -7,16 +7,16 @@ import { breakpoints, useWindowSize } from '@openedx/paragon';
 
 import { AlertList } from '@src/generic/user-messages';
 import { useModel } from '@src/generic/model-store';
-import { getCoursewareOutlineSidebarSettings } from '../data/selectors';
+import { getCoursewareOutlineSidebarSettings } from '@src/courseware/data/selectors';
 import { Trigger as CourseOutlineTrigger } from './sidebar/sidebars/course-outline';
-import Chat from './chat/Chat';
+import Chat from '@src/courseware/course/chat/Chat';
 import SidebarProvider from './sidebar/SidebarContextProvider';
 import SidebarTriggers from './sidebar/SidebarTriggers';
-import NewSidebarProvider from './new-sidebar/SidebarContextProvider';
-import NewSidebarTriggers from './new-sidebar/SidebarTriggers';
-import { CelebrationModal, shouldCelebrateOnSectionLoad, WeeklyGoalCelebrationModal } from './celebration';
-import CourseBreadcrumbs from './CourseBreadcrumbs';
-import ContentTools from './content-tools';
+import NewSidebarProvider from '@src/courseware/course/new-sidebar/SidebarContextProvider';
+import NewSidebarTriggers from '@src/courseware/course/new-sidebar/SidebarTriggers';
+import { CelebrationModal, shouldCelebrateOnSectionLoad, WeeklyGoalCelebrationModal } from '@src/courseware/course/celebration';
+import CourseBreadcrumbs from '@src/courseware/course/CourseBreadcrumbs';
+import ContentTools from '@src/courseware/course/content-tools';
 import Sequence from './sequence';
 
 const Course = ({
