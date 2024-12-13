@@ -13,7 +13,7 @@ import DiscussionTab from '@src/course-home/discussion-tab/DiscussionTab';
 import { UserMessagesProvider } from '@src/generic/user-messages';
 
 import OutlineTab from './course-home/outline-tab';
-import { CourseExit } from '@src/courseware/course/course-exit';
+import { CourseExit } from './courseware/course/course-exit';
 import CoursewareContainer from '@src/courseware';
 import CoursewareRedirectLandingPage from '@src/courseware/CoursewareRedirectLandingPage';
 import DatesTab from '@src/course-home/dates-tab';
