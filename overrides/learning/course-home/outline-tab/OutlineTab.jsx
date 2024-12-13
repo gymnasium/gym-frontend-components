@@ -6,28 +6,28 @@ import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { Button } from '@openedx/paragon';
 import { PluginSlot } from '@openedx/frontend-plugin-framework';
-import { AlertList } from '../../generic/user-messages';
+import { AlertList } from '@src/generic/user-messages';
 
-import CourseDates from './widgets/CourseDates';
+import CourseDates from '@src/course-home/outline-tab/widgets/CourseDates';
 import CourseHandouts from './widgets/CourseHandouts';
 import StartOrResumeCourseCard from './widgets/StartOrResumeCourseCard';
 import WeeklyLearningGoalCard from './widgets/WeeklyLearningGoalCard';
-import CourseTools from './widgets/CourseTools';
-import { fetchOutlineTab } from '../data';
-import messages from './messages';
+import CourseTools from '@src/course-home/outline-tab/widgets/CourseTools';
+import { fetchOutlineTab } from '@src/course-home/data';
+import messages from '@src/course-home/outline-tab/messages';
 import Section from './Section';
-import ShiftDatesAlert from '../suggested-schedule-messaging/ShiftDatesAlert';
-import UpgradeNotification from '../../generic/upgrade-notification/UpgradeNotification';
-import UpgradeToShiftDatesAlert from '../suggested-schedule-messaging/UpgradeToShiftDatesAlert';
+import ShiftDatesAlert from '@src/course-home/suggested-schedule-messaging/ShiftDatesAlert';
+import UpgradeNotification from '@src/generic/upgrade-notification/UpgradeNotification';
+import UpgradeToShiftDatesAlert from '@src/course-home/suggested-schedule-messaging/UpgradeToShiftDatesAlert';
 import useCertificateAvailableAlert from './alerts/certificate-status-alert';
-import useCourseEndAlert from './alerts/course-end-alert';
-import useCourseStartAlert from '../../alerts/course-start-alert';
+import useCourseEndAlert from '@src/course-home/outline-tab/alerts/course-end-alert';
+import useCourseStartAlert from '@src/alerts/course-start-alert';
 import usePrivateCourseAlert from './alerts/private-course-alert';
-import useScheduledContentAlert from './alerts/scheduled-content-alert';
-import { useModel } from '../../generic/model-store';
+import useScheduledContentAlert from '@src/course-home/outline-tab/alerts/scheduled-content-alert';
+import { useModel } from '@src/generic/model-store';
 import WelcomeMessage from './widgets/WelcomeMessage';
-import ProctoringInfoPanel from './widgets/ProctoringInfoPanel';
-import AccountActivationAlert from '../../alerts/logistration-alert/AccountActivationAlert';
+import ProctoringInfoPanel from '@src/course-home/outline-tab/widgets/ProctoringInfoPanel';
+import AccountActivationAlert from '@src/alerts/logistration-alert/AccountActivationAlert';
 
 const OutlineTab = ({ intl }) => {
   const {
@@ -124,6 +124,24 @@ const OutlineTab = ({ intl }) => {
     }
   }, [location.search]);
 
+  const {
+    resumeCourse: {
+      hasVisitedCourse,
+    },
+  } = useModel('outline', courseId);
+
+  let sectionOpen;
+
+  function openIndex(ident, index) {
+    const sectionCount = courses[ident].sectionIds.length;
+    if (sectionCount <= 2) {
+      sectionOpen = index <= sectionCount - 1 ? true : false;
+    } else {
+      sectionOpen = index === 0 ? true : false;
+    }
+    return sectionOpen;
+  }
+
   return (
     <>
       <div data-learner-type={learnerType} className="row w-100 mx-0 my-3 justify-content-between">
@@ -162,19 +180,24 @@ const OutlineTab = ({ intl }) => {
           <WelcomeMessage courseId={courseId} />
           {rootCourseId && (
             <>
-              <div className="row w-100 m-0 mb-3 justify-content-end">
+              {/* Disable expand/contract button */}
+              {/* <div className="expand-collapse-button-wrapper row w-100 m-0 mb-3 justify-content-end">
                 <div className="col-12 col-md-auto p-0">
                   <Button variant="outline-primary" block onClick={() => { setExpandAll(!expandAll); }}>
                     {expandAll ? intl.formatMessage(messages.collapseAll) : intl.formatMessage(messages.expandAll)}
                   </Button>
                 </div>
-              </div>
+              </div> */}
               <ol id="courseHome-outline" className="list-unstyled">
-                {courses[rootCourseId].sectionIds.map((sectionId) => (
+                {courses[rootCourseId].sectionIds.map((sectionId, index) => (
+                  // there's probably a more elegant way of doing this... for first time visitors who haven't started the course, forces the first section open for full courses, and all sections open for short courses with only two or less sections.
+                  !hasVisitedCourse
+                    ? openIndex(rootCourseId, index)
+                    : (sectionOpen = sections[sectionId].resumeBlock),
                   <Section
                     key={sectionId}
                     courseId={courseId}
-                    defaultOpen={sections[sectionId].resumeBlock}
+                    defaultOpen={sectionOpen}
                     expand={expandAll}
                     section={sections[sectionId]}
                   />
