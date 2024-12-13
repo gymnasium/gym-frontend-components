@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import React, { useContext, useMemo } from 'react';
 import { AppContext } from '@edx/frontend-platform/react';
-import { ALERT_TYPES, useAlert } from '../../../../generic/user-messages';
-import { useModel } from '../../../../generic/model-store';
+import { ALERT_TYPES, useAlert } from '@src/generic/user-messages';
+import { useModel } from '@src/generic/model-store';
 
 const PrivateCourseAlert = React.lazy(() => import('./PrivateCourseAlert'));
 
