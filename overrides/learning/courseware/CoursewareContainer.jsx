@@ -299,7 +299,7 @@ class CoursewareContainer extends Component {
 const sequenceShape = PropTypes.shape({
   id: PropTypes.string.isRequired,
   unitIds: PropTypes.arrayOf(PropTypes.string),
-  sectionId: PropTypes.string.isRequired,
+  sectionId: PropTypes.string,
   saveUnitPosition: PropTypes.any, // eslint-disable-line
 });
 
