@@ -11,12 +11,12 @@ import {
   getResumeBlock,
   getSequenceForUnitDeprecated,
   saveSequencePosition,
-} from './data';
+} from '@src/courseware/data';
 import { TabPage } from '../tab-page';
 
 import Course from './course';
-import { handleNextSectionCelebration } from './course/celebration';
-import withParamsAndNavigation from './utils';
+import { handleNextSectionCelebration } from '@src/courseware/course/celebration';
+import withParamsAndNavigation from '@src/courseware/utils';
 
 // Look at where this is called in componentDidUpdate for more info about its usage
 const checkResumeRedirect = memoize((courseStatus, courseId, sequenceId, firstSequenceId, navigate) => {
