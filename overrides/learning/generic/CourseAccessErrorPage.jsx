@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { LearningHeader as Header } from '@edx/frontend-component-header';
-import Footer from '@edx/frontend-component-footer';
+import { GymHeader as Header } from '@openedx/gym-frontend';
 import { useParams, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+// import FooterSlot from '@openedx/frontend-slot-footer';
 import useActiveEnterpriseAlert from '@src/alerts/active-enteprise-alert';
 import { AlertList } from '@src/generic/user-messages';
 import { fetchDiscussionTab } from '@src/course-home/data/thunks';
@@ -28,11 +28,10 @@ const CourseAccessErrorPage = ({ intl }) => {
   if (courseStatus === LOADING) {
     return (
       <>
-        <Header />
+        <Header secondaryNav="courses" activeLink="courses" />
         <PageLoading
           srMessage={intl.formatMessage(messages.loading)}
         />
-        <Footer />
       </>
     );
   }
@@ -41,7 +40,7 @@ const CourseAccessErrorPage = ({ intl }) => {
   }
   return (
     <>
-      <Header />
+      <Header secondaryNav="courses" activeLink="courses" />
       <main id="main-content" className="container my-5 text-center" data-testid="access-denied-main">
         <AlertList
           topic="outline"
@@ -51,7 +50,6 @@ const CourseAccessErrorPage = ({ intl }) => {
           }}
         />
       </main>
-      <Footer />
     </>
   );
 };
