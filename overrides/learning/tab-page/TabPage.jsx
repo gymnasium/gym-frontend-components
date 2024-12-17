@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 import { Toast } from '@openedx/paragon';
-import { LearningHeader as Header } from '@edx/frontend-component-header';
-import FooterSlot from '@openedx/frontend-slot-footer';
+import { GymHeader as Header } from '@openedx/gym-frontend';
 import PageLoading from '@src/generic/PageLoading';
 import { getAccessDeniedRedirectUrl } from '@src/shared/access';
 import { useModel } from '@src/generic/model-store';
@@ -64,7 +63,7 @@ const TabPage = ({ intl, ...props }) => {
         </>
       )}
 
-      <Header courseOrg={org} courseNumber={number} courseTitle={title} />
+      <Header secondaryNav="courses" activeLink="courses" courseId={courseId} courseOrg={org} courseNumber={number} courseTitle={title} />
 
       {courseStatus === 'loading' && (
         <PageLoading srMessage={intl.formatMessage(messages.loading)} />
@@ -80,7 +79,6 @@ const TabPage = ({ intl, ...props }) => {
           {intl.formatMessage(messages.failure)}
         </p>
       )}
-      <FooterSlot />
     </>
   );
 };
