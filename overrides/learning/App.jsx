@@ -14,7 +14,7 @@ import { UserMessagesProvider } from '@src/generic/user-messages';
 
 import OutlineTab from './course-home/outline-tab';
 import { CourseExit } from './courseware/course/course-exit';
-import CoursewareContainer from '@src/courseware';
+import CoursewareContainer from './courseware';
 import CoursewareRedirectLandingPage from '@src/courseware/CoursewareRedirectLandingPage';
 import DatesTab from '@src/course-home/dates-tab';
 import GoalUnsubscribe from './course-home/goal-unsubscribe';
@@ -27,7 +27,7 @@ import initializeStore from '@src/store';
 import NoticesProvider from '@src/generic/notices';
 import PathFixesProvider from '@src/generic/path-fixes';
 import LiveTab from '@src/course-home/live-tab/LiveTab';
-import CourseAccessErrorPage from '@src/generic/CourseAccessErrorPage';
+import CourseAccessErrorPage from './generic/CourseAccessErrorPage';
 import DecodePageRoute from '@src/decode-page-route';
 import { DECODE_ROUTES, ROUTES } from '@src/constants';
 import PreferencesUnsubscribe from '@src/preferences-unsubscribe';
