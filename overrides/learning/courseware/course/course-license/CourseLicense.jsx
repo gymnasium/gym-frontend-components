@@ -12,7 +12,7 @@ import {
   faCreativeCommonsZero,
 } from '@fortawesome/free-brands-svg-icons';
 
-import messages from './messages';
+import messages from '@src/courseware/course/course-license/messages';
 
 const CreativeCommonsLicenseTags = {
   by: {
