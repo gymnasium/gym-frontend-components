@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { Collapsible } from '@openedx/paragon';
 
 import courseOutlineMessages from '@src/course-home/outline-tab/messages';
 import { getCourseOutline, getSequenceId } from '@src/courseware/data/selectors';
@@ -14,7 +11,6 @@ import { UNIT_ICON_TYPES } from '@src/courseware/course/sidebar/sidebars/course-
 const SidebarSequence = ({
   intl,
   courseId,
-  defaultOpen,
   sequence,
   activeUnitId,
 }) => {
@@ -28,10 +24,7 @@ const SidebarSequence = ({
     completionStat,
   } = sequence;
 
-  const [open, setOpen] = useState(defaultOpen);
   const { units = {} } = useSelector(getCourseOutline);
-  const activeSequenceId = useSelector(getSequenceId);
-  const isActiveSequence = id === activeSequenceId;
 
   const sectionTitle = (
     <>
@@ -51,31 +44,21 @@ const SidebarSequence = ({
   );
 
   return (
-    <li>
-      <Collapsible
-        className={classNames('mb-2', { 'active-section': isActiveSequence, 'bg-info-100': isActiveSequence && !open })}
-        styling="card-lg text-break"
-        title={sectionTitle}
-        open={open}
-        onToggle={() => setOpen(!open)}
-      >
-        <ol className="list-unstyled">
-          {unitIds.map((unitId, index) => (
-            <SidebarUnit
-              key={unitId}
-              id={unitId}
-              courseId={courseId}
-              sequenceId={id}
-              unit={units[unitId]}
-              isActive={activeUnitId === unitId}
-              activeUnitId={activeUnitId}
-              isFirst={index === 0}
-              isLocked={type === UNIT_ICON_TYPES.lock}
-            />
-          ))}
-        </ol>
-      </Collapsible>
-    </li>
+    <>
+      {unitIds.map((unitId, index) => (
+        <SidebarUnit
+          key={unitId}
+          id={unitId}
+          courseId={courseId}
+          sequenceId={id}
+          unit={units[unitId]}
+          isActive={activeUnitId === unitId}
+          activeUnitId={activeUnitId}
+          isFirst={index === 0}
+          isLocked={type === UNIT_ICON_TYPES.lock}
+        />
+      ))}
+    </>
   );
 };
 

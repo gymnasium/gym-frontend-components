@@ -19,7 +19,7 @@ import {
 } from '@src/courseware/data/selectors';
 import { getCourseOutlineStructure } from '@src/courseware/data/thunks';
 import SidebarSection from '@src/courseware/course/sidebar/sidebars/course-outline/components/SidebarSection';
-import SidebarSequence from '@src/courseware/course/sidebar/sidebars/course-outline/components/SidebarSequence';
+import SidebarSequence from './components/SidebarSequence';
 import { ID } from '@src/courseware/course/sidebar/sidebars/course-outline/constants';
 import { useCourseOutlineSidebar } from '@src/courseware/course/sidebar/sidebars/course-outline/hooks';
 import messages from '@src/courseware/course/sidebar/sidebars/course-outline/messages';
