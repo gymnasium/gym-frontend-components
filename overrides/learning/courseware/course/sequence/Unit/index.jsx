@@ -9,14 +9,14 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 import { useModel } from '@src/generic/model-store';
 import { usePluginsCallback } from '@src/generic/plugin-store';
 
-import BookmarkButton from '../../bookmark/BookmarkButton';
-import messages from '../messages';
+import BookmarkButton from '@src/courseware/course/bookmark/BookmarkButton';
+import messages from '@src/courseware/course/sequence/messages';
 import ContentIFrame from './ContentIFrame';
-import UnitSuspense from './UnitSuspense';
-import { modelKeys, views } from './constants';
-import { useExamAccess, useShouldDisplayHonorCode } from './hooks';
-import { getIFrameUrl } from './urls';
-import UnitTitleSlot from '../../../../plugin-slots/UnitTitleSlot';
+import UnitSuspense from '@src/courseware/course/sequence/Unit/UnitSuspense';
+import { modelKeys, views } from '@src/courseware/course/sequence/Unit/constants';
+import { useExamAccess, useShouldDisplayHonorCode } from '@src/courseware/course/sequence/Unit/hooks';
+import { getIFrameUrl } from '@src/courseware/course/sequence/Unit/urls';
+import UnitTitleSlot from '@src/plugin-slots/UnitTitleSlot';
 
 const Unit = ({
   courseId,
