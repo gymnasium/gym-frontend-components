@@ -13,20 +13,20 @@ import SequenceExamWrapper from '@edx/frontend-lib-special-exams';
 import PageLoading from '@src/generic/PageLoading';
 import { useModel } from '@src/generic/model-store';
 import { useSequenceBannerTextAlert, useSequenceEntranceExamAlert } from '@src/alerts/sequence-alerts/hooks';
-import SequenceContainerSlot from '../../../plugin-slots/SequenceContainerSlot';
+import SequenceContainerSlot from '@src/plugin-slots/SequenceContainerSlot';
 
-import { getCoursewareOutlineSidebarSettings } from '../../data/selectors';
+import { getCoursewareOutlineSidebarSettings } from '@src/courseware/data/selectors';
 import CourseLicense from '../course-license';
-import Sidebar from '../sidebar/Sidebar';
-import NewSidebar from '../new-sidebar/Sidebar';
+import Sidebar from '@src/courseware/course/sidebar/Sidebar';
+import NewSidebar from '@src/courseware/course/new-sidebar/Sidebar';
 import {
   Trigger as CourseOutlineTrigger,
   Sidebar as CourseOutlineTray,
-} from '../sidebar/sidebars/course-outline';
-import messages from './messages';
-import HiddenAfterDue from './hidden-after-due';
-import { SequenceNavigation, UnitNavigation } from './sequence-navigation';
-import SequenceContent from './SequenceContent';
+} from '@src/courseware/course/sidebar/sidebars/course-outline';
+import messages from '@src/courseware/course/sequence/messages';
+import HiddenAfterDue from '@src/courseware/course/sequence/hidden-after-due';
+import { SequenceNavigation, UnitNavigation } from '@src/courseware/course/sequence/sequence-navigation';
+import SequenceContent from '@src/courseware/course/sequence/SequenceContent';
 
 const Sequence = ({
   unitId,

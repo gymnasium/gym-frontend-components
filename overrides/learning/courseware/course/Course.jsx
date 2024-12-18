@@ -17,7 +17,7 @@ import NewSidebarTriggers from '@src/courseware/course/new-sidebar/SidebarTrigge
 import { CelebrationModal, shouldCelebrateOnSectionLoad, WeeklyGoalCelebrationModal } from '@src/courseware/course/celebration';
 import CourseBreadcrumbs from '@src/courseware/course/CourseBreadcrumbs';
 import ContentTools from '@src/courseware/course/content-tools';
-import Sequence from '@src/courseware/course/sequence';
+import Sequence from './sequence';
 
 const Course = ({
   courseId,

@@ -7,9 +7,9 @@ import { ModalDialog, Modal } from '@openedx/paragon';
 import { useSelector } from 'react-redux';
 import { PluginSlot } from '@openedx/frontend-plugin-framework';
 import PageLoading from '@src/generic/PageLoading';
-import * as hooks from './hooks';
+import * as hooks from '@src/courseware/course/sequence/Unit/hooks';
 import { getProgressTabData } from '@src/course-home/data/api';
-import SanitizeHtmlFragment from '@src/course-home/outline-tab/SanitizeHtmlFragment';
+import SanitizeHtmlFragment from '../../../../generic/SanitizeHtmlFragment';
 
 
 /**
