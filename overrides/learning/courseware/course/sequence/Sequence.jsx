@@ -22,7 +22,7 @@ import NewSidebar from '@src/courseware/course/new-sidebar/Sidebar';
 import {
   Trigger as CourseOutlineTrigger,
   Sidebar as CourseOutlineTray,
-} from '@src/courseware/course/sidebar/sidebars/course-outline';
+} from '../sidebar/sidebars/course-outline';
 import messages from '@src/courseware/course/sequence/messages';
 import HiddenAfterDue from '@src/courseware/course/sequence/hidden-after-due';
 import { SequenceNavigation, UnitNavigation } from '@src/courseware/course/sequence/sequence-navigation';

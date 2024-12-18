@@ -8,7 +8,7 @@ import { breakpoints, useWindowSize } from '@openedx/paragon';
 import { AlertList } from '@src/generic/user-messages';
 import { useModel } from '@src/generic/model-store';
 import { getCoursewareOutlineSidebarSettings } from '@src/courseware/data/selectors';
-import { Trigger as CourseOutlineTrigger } from '@src/courseware/course/sidebar/sidebars/course-outline';
+import { Trigger as CourseOutlineTrigger } from './sidebar/sidebars/course-outline';
 import Chat from '@src/courseware/course/chat/Chat';
 import SidebarProvider from '@src/courseware/course/sidebar/SidebarContextProvider';
 import SidebarTriggers from '@src/courseware/course/sidebar/SidebarTriggers';
