@@ -26,7 +26,7 @@ import {
 import messages from '@src/courseware/course/sequence/messages';
 import HiddenAfterDue from '@src/courseware/course/sequence/hidden-after-due';
 import { SequenceNavigation, UnitNavigation } from '@src/courseware/course/sequence/sequence-navigation';
-import SequenceContent from '@src/courseware/course/sequence/SequenceContent';
+import SequenceContent from './SequenceContent';
 
 const Sequence = ({
   unitId,
