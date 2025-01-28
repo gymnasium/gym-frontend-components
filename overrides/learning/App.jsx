@@ -57,9 +57,6 @@ export const App = () => {
   }
   return (
     <AppProvider store={initializeStore()}>
-      <Helmet>
-        <link rel="shortcut icon" href={getConfig().FAVICON_URL} type="image/x-icon" />
-      </Helmet>
       <PathFixesProvider>
         <NoticesProvider>
           <UserMessagesProvider>
