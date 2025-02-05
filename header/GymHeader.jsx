@@ -9,9 +9,10 @@ import CoursesNav from './CoursesNav';
 import DashboardNav from './DashboardNav';
 import MainMenu from './MainMenu';
 
-ensureConfig(['MARKETING_SITE_BASE_URL','SITE_NAME', 'GYM_LOGO_SRC', 'GYM_LOGO_SRCSET'], 'GymHeader');
+ensureConfig(['MARKETING_SITE_BASE_URL','SITE_NAME', 'GYM_LOGO_SRC', 'GYM_LOGO_SRCSET', 'STATIC_ASSETS_URL'], 'GymHeader');
 
 const getBaseUrl = () => getConfig().MARKETING_SITE_BASE_URL;
+const getStaticAssetsUrl = () => getConfig().STATIC_ASSETS_URL;
 const getSiteName = () => getConfig().SITE_NAME;
 const getLogoSrc = () => getConfig().GYM_LOGO_SRC;
 const getLogoSrcset = () => getConfig().GYM_LOGO_SRCSET;
@@ -49,8 +50,8 @@ const GymHeader = ({
     <LinkedLogo
       className="logo"
       href={`${getBaseUrl()}`}
-      src={`${getBaseUrl()}${getLogoSrc()}`}
-      srcSet={`${getBaseUrl()}${getLogoSrcset()}`}
+      src={`${getStaticAssetsUrl()}${getLogoSrc()}`}
+      srcSet={`${getStaticAssetsUrl()}${getLogoSrcset()}`}
       alt={getSiteName()}
     />
   );
