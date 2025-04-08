@@ -29,7 +29,7 @@ class GymFooter extends React.Component {
       category: 'outbound_link',
       label,
     };
-    sendTrackEvent(eventName, properties);
+    // sendTrackEvent(eventName, properties);
   }
 
   render() {
