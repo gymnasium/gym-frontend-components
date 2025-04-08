@@ -42,13 +42,14 @@ function Banner() {
     console.error(`Error: ${error.message}`);
   }
   
-  const showBanner = data && data?.msg?.banner?.active;
-  const banner = showBanner && htmlDecode(data?.msg?.banner?.content);
-  const bannerClasses = showBanner && ['site-status', data?.msg?.banner?.class];
-  const sanitizedBanner = { __html: dompurify.sanitize(banner) };
+  const showBanner = data && data?.msg?.banner?.active && data?.msg?.banner?.content;
+  const banner = data?.msg?.banner?.content && htmlDecode(data?.msg?.banner?.content);
+  const bannerClasses = data?.msg?.banner?.class ? ' ' + data?.msg?.banner?.class : '';
+  const sanitizedBanner = data?.msg?.banner?.content && { __html: dompurify.sanitize(banner) };
 
   return (
-    <aside id="site-status" className={bannerClasses.join(' ')}>
+    showBanner &&
+    <aside id="site-status" className={`site-status` + bannerClasses}>
       <div className="container" dangerouslySetInnerHTML={ sanitizedBanner } />
     </aside>
   );
