@@ -24,7 +24,9 @@ import AppWrapper from '@src/containers/WidgetContainers/AppWrapper';
 
 import { getConfig } from '@edx/frontend-platform';
 
-import { ErrorPage, GymFooter as FooterSlot, GymHeader } from '@openedx/gym-frontend';
+import { ErrorPage } from '@openedx/gym-frontend/overrides/platform';
+
+import { GymFooter as FooterSlot, GymHeader } from '@openedx/gym-frontend';
 
 import messages from '@src/messages';
 import './App.scss';

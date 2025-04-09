@@ -1,13 +1,13 @@
 import {
   getConfig,
 } from '@edx/frontend-platform';
-import { AppProvider } from '../';
+import { AppProvider } from '@openedx/gym-frontend/overrides/platform';
 import { PageWrap } from '@edx/frontend-platform/react';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { Helmet } from 'react-helmet';
+// import { Helmet } from 'react-helmet';
 import { fetchDiscussionTab, fetchLiveTab } from '@src/course-home/data/thunks';
 import DiscussionTab from '@src/course-home/discussion-tab/DiscussionTab';
 

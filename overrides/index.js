@@ -1,4 +1,3 @@
-export { ErrorPage } from './ErrorPage';
-export { ErrorBoundary } from './ErrorBoundary';
-export { default as AppProvider } from './AppProvider';
-
+export { AppProvider, ErrorBoundary, ErrorPage } from './platform';
+export { Learning } from './learning';
+export { CourseCard, LearnerDashboard } from './learner-dashboard';
