@@ -1,7 +1,8 @@
 import {
   getConfig,
 } from '@edx/frontend-platform';
-import { AppProvider, PageWrap } from '@edx/frontend-platform/react';
+import { AppProvider } from '../';
+import { PageWrap } from '@edx/frontend-platform/react';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
