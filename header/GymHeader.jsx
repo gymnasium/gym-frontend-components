@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 
-import Banner from '../banner';
+import Banner from '../banner/Banner';
 import AnonUserMenu from './AnonUserMenu';
 import AuthUserMenu from './AuthUserMenu';
 import CoursesNav from './CoursesNav';
 import DashboardNav from './DashboardNav';
 import MainMenu from './MainMenu';
+import { DataProvider } from '../livedata';
 
 ensureConfig(['MARKETING_SITE_BASE_URL','SITE_NAME', 'GYM_LOGO_SRC', 'GYM_LOGO_SRCSET', 'STATIC_ASSETS_URL'], 'GymHeader');
 
@@ -54,12 +55,17 @@ const GymHeader = ({
       src={`${getStaticAssetsUrl()}${getLogoSrc()}`}
       srcSet={`${getStaticAssetsUrl()}${getLogoSrcset()}`}
       alt={getSiteName()}
+      fetchpriority="high"
+      width="208"
+      height="24"
     />
   );
 
   return (
     <header className="site-header gym-header">
-      <Banner />
+      <DataProvider>
+        <Banner />
+      </DataProvider>
       <div className="container">
         <nav className="main" role="navigation" aria-label="Main">
           {headerLogo}
