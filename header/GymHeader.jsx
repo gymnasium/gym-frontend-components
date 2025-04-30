@@ -9,7 +9,7 @@ import AuthUserMenu from './AuthUserMenu';
 import CoursesNav from './CoursesNav';
 import DashboardNav from './DashboardNav';
 import MainMenu from './MainMenu';
-import { DataProvider } from '../livedata';
+import { DataProvider } from '../data';
 
 ensureConfig(['MARKETING_SITE_BASE_URL','SITE_NAME', 'GYM_LOGO_SRC', 'GYM_LOGO_SRCSET', 'STATIC_ASSETS_URL'], 'GymHeader');
 

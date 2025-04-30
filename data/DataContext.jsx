@@ -1,7 +1,8 @@
 import React, { createContext, useState, useEffect, useContext, useMemo } from 'react';
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
 
-ensureConfig(['STATIC_ASSETS_URL'], 'Livedata');
+ensureConfig(['STATIC_ASSETS_URL', 'API_URL'], 'DataProvider');
+const API_URL = () => getConfig().API_URL;
 const STATIC_ASSETS_URL = () => getConfig().STATIC_ASSETS_URL;
 const API_ENDPOINT = () => `${STATIC_ASSETS_URL()}/api/config.json`;
 
