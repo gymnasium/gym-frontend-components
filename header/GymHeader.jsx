@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 
+import Banner from '../banner/Banner';
 import AnonUserMenu from './AnonUserMenu';
 import AuthUserMenu from './AuthUserMenu';
 import CoursesNav from './CoursesNav';
@@ -58,6 +59,7 @@ const GymHeader = ({
 
   return (
     <header className="site-header gym-header">
+      <Banner />
       <div className="container">
         <nav className="main" role="navigation" aria-label="Main">
           {headerLogo}
