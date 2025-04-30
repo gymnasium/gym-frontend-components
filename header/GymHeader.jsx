@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 
-import Banner from '../banner/Banner';
+import Banner from '../banner';
 import AnonUserMenu from './AnonUserMenu';
 import AuthUserMenu from './AuthUserMenu';
 import CoursesNav from './CoursesNav';
