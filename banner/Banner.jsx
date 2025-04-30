@@ -49,7 +49,7 @@ function Banner() {
 
   return (
     showBanner &&
-    <aside id="site-status" className={`site-status` + bannerClasses}>
+    <aside id="system-status" className={`system-status` + bannerClasses}>
       <div className="container" dangerouslySetInnerHTML={ sanitizedBanner } />
     </aside>
   );
