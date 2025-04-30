@@ -55,6 +55,7 @@ const GymHeader = ({
       src={`${getStaticAssetsUrl()}${getLogoSrc()}`}
       srcSet={`${getStaticAssetsUrl()}${getLogoSrcset()}`}
       alt={getSiteName()}
+      decoding="async"
       fetchpriority="high"
       width="208"
       height="24"
