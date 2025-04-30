@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useState, useEffect, useContext, useMemo } from 'react';
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
 
 ensureConfig(['STATIC_ASSETS_URL'], 'Livedata');
@@ -34,8 +34,14 @@ export function DataProvider({ children }) {
     fetchData();
   }, []);
 
+  const contextValue = useMemo(() => ({ data, loading, error }), [
+    data,
+    loading,
+    error,
+  ]);
+
   return (
-    <DataContext.Provider value={{ data, loading, error }}>
+    <DataContext.Provider value={contextValue}>
       {children}
     </DataContext.Provider>
   );
