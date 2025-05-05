@@ -1,13 +1,13 @@
 import React from 'react';
 import { htmlDecode } from '../helpers';
 import dompurify from 'dompurify';
-import { useData } from '../livedata/DataContext';
+import { useData } from '../data/DataContext';
 
 function Banner() {
   const { data, loading, error } = useData();
 
   // if (loading) {
-  //   console.log(`Loading JSON data.`);
+  //   console.log(`loading…`);
   // }
 
   if (error) {
@@ -15,7 +15,7 @@ function Banner() {
   }
 
   // if (!data) {
-  //   console.warn(`No data available.`);
+  //   console.warn(`no data…`);
   // }
 
   if (data) {
