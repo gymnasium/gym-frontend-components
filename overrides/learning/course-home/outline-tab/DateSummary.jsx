@@ -23,17 +23,6 @@ const DateSummary = ({
   const linkedTitle = dateBlock.link && isLearnerAssignment(dateBlock);
   const timezoneFormatArgs = userTimezone ? { timeZone: userTimezone } : {};
 
-  const logVerifiedUpgradeClick = () => {
-    // sendTrackEvent('edx.bi.ecommerce.upsell_links_clicked', {
-    //   org_key: org,
-    //   courserun_key: courseId,
-    //   linkCategory: '(none)',
-    //   linkName: 'course_home_dates',
-    //   linkType: 'link',
-    //   pageName: 'course_home',
-    // });
-  };
-
   return (
     <li className="p-0 mb-3 small text-dark-500">
       <div className="row">
@@ -66,7 +55,6 @@ const DateSummary = ({
         {!linkedTitle && dateBlock.link && (
           <a
             href={dateBlock.link}
-            // onClick={dateBlock.dateType === 'verified-upgrade-deadline' ? logVerifiedUpgradeClick : () => {}}
             className="description-link"
           >
             {dateBlock.linkText}

@@ -3,8 +3,7 @@ import { ensureConfig, getConfig } from '@edx/frontend-platform';
 
 ensureConfig(['STATIC_ASSETS_URL', 'API_URL'], 'DataProvider');
 const API_URL = () => getConfig().API_URL;
-const STATIC_ASSETS_URL = () => getConfig().STATIC_ASSETS_URL;
-const API_ENDPOINT = () => `${STATIC_ASSETS_URL()}/api/config.json`;
+const API_ENDPOINT = () => `${API_URL()}/api/config.json`;
 
 const DataContext = createContext();
 

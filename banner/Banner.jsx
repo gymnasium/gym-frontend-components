@@ -11,7 +11,7 @@ function Banner() {
   // }
 
   if (error) {
-    console.error(`Error: ${error.message}`);
+    console.warn(`Error: ${error.message}`);
   }
 
   // if (!data) {

@@ -13,7 +13,7 @@ import InstructorToolbar from '../instructor-toolbar';
 import useEnrollmentAlert from '@src/alerts/enrollment-alert';
 import useLogistrationAlert from '@src/alerts/logistration-alert';
 
-import ProductTours from '@src/product-tours/ProductTours';
+// import ProductTours from '@src/product-tours/ProductTours';
 
 const LoadedTabPage = ({
   activeTabSlug,
@@ -44,12 +44,12 @@ const LoadedTabPage = ({
 
   return (
     <>
-      <ProductTours
+      {/* <ProductTours
         activeTab={activeTabSlug}
         courseId={courseId}
         isStreakCelebrationOpen={isStreakCelebrationOpen}
         org={org}
-      />
+      /> */}
       <Helmet>
         <title>{`${activeTab ? `${activeTab.title} | ` : ''}${title} | ${getConfig().SITE_NAME}`}</title>
       </Helmet>
