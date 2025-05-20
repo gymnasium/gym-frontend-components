@@ -223,15 +223,15 @@ const CertificateStatus = ({ intl }) => {
       is_staff: administrator,
       certificate_status_variant: certEventName,
     });
-    if (certCase === 'upgrade') {
-      sendTrackEvent('edx.bi.ecommerce.upsell_links_clicked', {
-        ...eventProperties,
-        linkCategory: '(none)',
-        linkName: 'progress_certificate',
-        linkType: 'button',
-        pageName: 'progress',
-      });
-    }
+    // if (certCase === 'upgrade') {
+    //   sendTrackEvent('edx.bi.ecommerce.upsell_links_clicked', {
+    //     ...eventProperties,
+    //     linkCategory: '(none)',
+    //     linkName: 'progress_certificate',
+    //     linkType: 'button',
+    //     pageName: 'progress',
+    //   });
+    // }
   };
 
   return (

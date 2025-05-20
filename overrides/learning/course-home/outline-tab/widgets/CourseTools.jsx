@@ -1,8 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
-import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -12,7 +10,7 @@ import { faNewspaper } from '@fortawesome/free-regular-svg-icons';
 
 import messages from '@src/course-home/outline-tab/messages';
 import { useModel } from '@src/generic/model-store';
-import LaunchCourseHomeTourButton from '@src/product-tours/newUserCourseHomeTour/LaunchCourseHomeTourButton';
+// import LaunchCourseHomeTourButton from '@src/product-tours/newUserCourseHomeTour/LaunchCourseHomeTourButton';
 
 const CourseTools = ({ intl }) => {
   const {
@@ -30,16 +28,6 @@ const CourseTools = ({ intl }) => {
   const eventProperties = {
     org_key: org,
     courserun_key: courseId,
-  };
-
-  const logClick = (analyticsId) => {
-    const { administrator } = getAuthenticatedUser();
-    sendTrackingLogEvent('edx.course.tool.accessed', {
-      ...eventProperties,
-      course_id: courseId, // should only be courserun_key, but left as-is for historical reasons
-      is_staff: administrator,
-      tool_name: analyticsId,
-    });
   };
 
   const renderIcon = (iconClasses) => {
@@ -67,15 +55,15 @@ const CourseTools = ({ intl }) => {
       <ul className="list-unstyled">
         {courseTools.map((courseTool) => (
           <li key={courseTool.analyticsId} className="small">
-            <a href={courseTool.url} onClick={() => logClick(courseTool.analyticsId)}>
+            <a href={courseTool.url}>
               <FontAwesomeIcon icon={renderIcon(courseTool.analyticsId)} className="mr-2" fixedWidth />
               {courseTool.title}
             </a>
           </li>
         ))}
-        <li className="small" id="courseHome-launchTourLink">
+        {/* <li className="small" id="courseHome-launchTourLink">
           <LaunchCourseHomeTourButton />
-        </li>
+        </li> */}
       </ul>
     </section>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import PropTypes from 'prop-types';
-import { sendTrackEvent } from '@edx/frontend-platform/analytics';
+// import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { AppContext } from '@edx/frontend-platform/react';
 
 import { htmlDecode } from '../helpers';
@@ -29,7 +29,7 @@ class GymFooter extends React.Component {
       category: 'outbound_link',
       label,
     };
-    sendTrackEvent(eventName, properties);
+    // sendTrackEvent(eventName, properties);
   }
 
   render() {
